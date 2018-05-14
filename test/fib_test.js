@@ -15,6 +15,8 @@ describe('Fibonacci sequence test', () => {
     var result = fibonacci(x);
     var series = result.reduce((arr, val) => { return arr + val; }); // series is the sum of the array
     var result2 = fibonacci(y);
+    expect(result.length).to.equal(x+1); // generic checks including sum of series
+    expect(result2).to.include(result[x]);
     expect(series).to.equal(result2[y]-1);
     done();
   });
