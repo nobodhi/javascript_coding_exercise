@@ -24,3 +24,14 @@ A naive solution is included in the code.
 This is a fun example of a back-end coding challenge in Javascript that also demonstrates the dilemmas a developer faces when defending a multi-hour project like this. Javascript projects are a universe: just when should you begin to stop, and step away from a solution?
 
 The naive answer simply appeals to the principles of **Document First, Test Driven Development**. While there may be innumerable ways in which the solution can be improved, the tests are passing and therefore the code is complete.
+
+## Fibonacci Series
+
+In this exercise the test is located in **./test/fib-test.js**. The fibonacci module must return the Fibonacci sequence to N+1 places for any given N. The series is checked with the following formula
+
+`Sum(F(n)) = F(n+2)-1`
+
+#### Solution
+
+Fibonacci can be solved iteratively or recursively. In the latter case, it's just as important to make sure you're not repeating work as it is to avoid infinite loops. This solution handles that using a global variable inside the module. This is known as 'memoization'.
+
