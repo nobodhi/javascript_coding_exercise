@@ -1,10 +1,10 @@
 FROM node:8
 
-RUN mkdir -p /transfer-instructions-exercise
-WORKDIR /transfer-instructions-exercise
+RUN mkdir -p /coding-challenge
+WORKDIR /coding-challenge
 
-COPY package.json /transfer-instructions-exercise
+COPY package.json /coding-challenge
 
 RUN npm install
 
-COPY . /transfer-instructions-exercise
+COPY . /coding-challenge

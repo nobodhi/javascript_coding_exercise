@@ -1,7 +1,8 @@
 {
-  "name": "transfer-instructions-excercise",
+  "name": "javascript-coding-exercise",
   "scripts": {
     "test": "lab",
+    "fib-test": "lab test/fib_test.js",
     "test:watch": "fsmonitor -s -p '+*.js' npm run test"
   },
   "version": "0.1.0",

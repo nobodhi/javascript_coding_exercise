@@ -30,13 +30,21 @@ function generateTransferInstructions(distribution, balances) {
   // append the users balance and fractional percent
   Object.keys(balances).forEach((key) => {
     const u = _.find(users, { name: key });
+    
+    const p = u.fraction.split('/')[0]/u.fraction.split('/')[1];
+  
+    // BigNumber has problems. you can pass it (1/2) but you cannot pass it either (1/3) or ('1/2'):
+    // const p = new BigNumber(u.fraction.split('/')[0]/u.fraction.split('/')[1]);
+    // error: new BigNumber() number type has more than 15 significant digits: 0.3333333333333333
+  
     u.balance = balances[key];
-    u.percent = eval(u.fraction); // TODO no eval.
+    u.percent = p;
+  
   });
 
-  // use this to immediately sum a column.
-  const balance = _.sumBy(users, (u) => { return u.balance; }); // TODO arrow-body-style
-  let offset; // this is the inbalance pending, expressed as an offset from zero.
+  // cf ES6 reduce
+  const balance = _.sumBy(users, (u) => { return u.balance; }); 
+  let offset; // this is the imbalance pending, expressed as an offset from zero.
 
   // calculate the offset for each user based on their balance and their target percentage
   Object.keys(users).forEach((key) => {
@@ -58,7 +66,7 @@ function generateTransferInstructions(distribution, balances) {
     users = _.sortBy(users, 'offset'); 
     const user1 = users[users.length - 1];
     // the recipient has the greatest negative offset
-    const user2 = _.chain(users).filter(u => u.offset < 0).first().value(); 
+    const user2 = _.chain(users).filter(u => u.offset < 0).first().value();
 
     // consruct the xfer insructions
     const i = {};
@@ -78,7 +86,7 @@ function generateTransferInstructions(distribution, balances) {
 
   }
   while (offset >= 2); // HACK. 2 is the minimum solveable offset if units are integers.
-  console.log(instructions); // TODO no-console
+  console.log(instructions); 
   return (instructions); // return the topmost transfer instructions
 }
 

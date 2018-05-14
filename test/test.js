@@ -7,6 +7,9 @@ const it = lab.it;
 const expect = Code.expect;
 const generateTransferInstructions = require('../generate-transfer-instructions.js');
 
+// given the current balances and a target distribution (e.g. splitting a tab),
+// return a set of 'transfer instructions' explaining how to redistribute funds
+// among a group.
 describe('Generate Transfer Instructions', () => {
   it('should generate the correct transfer instructions for a one to any redistribution', (done) => {
     const distribution = {
@@ -23,7 +26,7 @@ describe('Generate Transfer Instructions', () => {
       from: 'seth',
       to: 'amy',
       amount: 2,
-    }, 
+    },
     {
       from: 'seth',
       to: 'john',
@@ -46,17 +49,17 @@ describe('Generate Transfer Instructions', () => {
       seth: '1/3',
       amy: '1/3',
       john: '1/3',
-    }
+    };
     const balances = {
       seth: 5,
       amy: 2,
       john: 5,
-    }
+    };
     const expected = [{
       from: 'seth',
       to: 'amy',
       amount: 1,
-    },{
+    }, {
       from: 'john',
       to: 'amy',
       amount: 1,
@@ -79,13 +82,13 @@ describe('Generate Transfer Instructions', () => {
       amy: '1/6',
       john: '1/3',
       sue: '1/6',
-    }
+    };
     const balances = {
       seth: 0,
       amy: 4,
       john: 3,
       sue: 5,
-    }
+    };
     const expected = [{
       from: 'sue',
       to: 'seth',

@@ -12,15 +12,15 @@ services:
     command: 'npm run test'
     network_mode: "host"
     volumes:
-      - .:/transfer-instructions-exercise
-      - /transfer-instructions-exercise/node_modules
+      - .:/coding-challenge
+      - /coding-challenge/node_modules
   testwatch:
     image: transferinstructionsexercise_base:latest
     command: 'npm run test:watch'
     network_mode: "host"
     volumes:
-      - .:/transfer-instructions-exercise
-      - /transfer-instructions-exercise/node_modules
+      - .:/coding-challenge
+      - /coding-challenge/node_modules
 
   # Start a Node.js console
   console:
@@ -28,8 +28,8 @@ services:
     command: 'node'
     network_mode: "host"
     volumes:
-      - .:/transfer-instructions-exercise
-      - /transfer-instructions-exercise/node_modules
+      - .:/coding-challenge
+      - /coding-challenge/node_modules
 
   # Run bash in Docker environment
   bash:
@@ -37,5 +37,5 @@ services:
     command: '/bin/bash'
     network_mode: "host"
     volumes:
-      - .:/transfer-instructions-exercise
-      - /transfer-instructions-exercise/node_modules
+      - .:/coding-challenge
+      - /coding-challenge/node_modules
