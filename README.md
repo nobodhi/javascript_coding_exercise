@@ -5,7 +5,7 @@
 Following are some fun puzzles and answers I've come across while interviewing and studying for Javascript related interviews.
 
 
-### Transfer Instructions Exercise
+### Cost Sharing Exercise
 
 This is a Node.js coding challenge I came across recently.
 
@@ -14,9 +14,8 @@ In this project, the developer is asked to write a function that passes the set 
 `npm run test`
 
 You can find the source for the tests in **./test/test.js**.
-The test points to a module, passes it some data, and expects a set of JSON instructions in response. The challenge is to get a passing result in the tests.
 
-(These instructions describe how to redistribute funds between people, according to ratios provided by the user, similar to a cost-sharing app.)
+The tests call a module, pass it some data, and expect in return a set of JSON 'transfer instructions' describing how to redistribute funds between people according to ratios provided by the user (similar to a cost-sharing app). The goal is to get the tests to pass. 
 
 #### Solution
 
@@ -25,9 +24,9 @@ This is a fun example of a back-end coding challenge in Javascript that also dem
 
 The naive answer simply appeals to the principles of **Document First, Test Driven Development**. While there may be innumerable ways in which the solution can be improved, the tests are passing and therefore the code is complete.
 
-## Fibonacci Series
+### Fibonacci Series
 
-In this exercise the test is located in **./test/fib-test.js**. The fibonacci module must return the Fibonacci sequence to N+1 places for any given N. The series is checked with the following formula
+In this exercise the test is located in **./test/fib-test.js**. The fibonacci module must return the Fibonacci sequence to N+1 places for any given N. The series is checked against the formula
 
 `Sum(F(n)) = F(n+2)-1`
 

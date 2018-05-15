@@ -33,7 +33,7 @@ function fibonacci(e) {
 
 // returns the completed array
 function fib (e) {
-  result = [];
+  result = []; // memoization
   fibonacci(e);  
   console.log(result);
   return result;
