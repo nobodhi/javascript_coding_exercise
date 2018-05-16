@@ -30,20 +30,15 @@ function generateTransferInstructions(distribution, balances) {
   // append the users balance and fractional percent
   Object.keys(balances).forEach((key) => {
     const u = _.find(users, { name: key });
-    
-    const p = u.fraction.split('/')[0]/u.fraction.split('/')[1];
-  
-    // BigNumber has problems. you can pass it (1/2) but you cannot pass it either (1/3) or ('1/2'):
+    u.balance = balances[key];
+    // HACK. BigNumber has problems. you can pass (1/2) but neither (1/3) nor ('1/2') is allowed:
     // const p = new BigNumber(u.fraction.split('/')[0]/u.fraction.split('/')[1]);
     // error: new BigNumber() number type has more than 15 significant digits: 0.3333333333333333
-  
-    u.balance = balances[key];
-    u.percent = p;
-  
+    u.percent = u.fraction.split('/')[0] / u.fraction.split('/')[1];
   });
 
   // cf ES6 reduce
-  const balance = _.sumBy(users, (u) => { return u.balance; }); 
+  const balance = _.sumBy(users, (u) => { return u.balance; });
   let offset; // this is the imbalance pending, expressed as an offset from zero.
 
   // calculate the offset for each user based on their balance and their target percentage

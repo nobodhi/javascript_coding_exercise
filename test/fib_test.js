@@ -10,7 +10,7 @@ var fibonacci = require('../fibonacci.js');
 // TODO add a test that N can only be a natural number.
 describe('Fibonacci sequence test', () => {
   it('should return an array containing the first n+1 elements of the fibonacci sequence', (done) => {
-    const x = 8; // choose any natural number
+    const x = 8; // choose any natural number TODO
     const y = x + 2; // series sum of F(n) = F(n+2)−1
     var result = fibonacci(x);
     var series = result.reduce((arr, val) => { return arr + val; }); // series is the sum of the array
