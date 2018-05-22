@@ -5,12 +5,12 @@ const lab = exports.lab = Lab.script();
 const describe = lab.describe;
 const it = lab.it;
 const expect = Code.expect;
-const generateTransferInstructions = require('../generate-transfer-instructions.js');
+const shareCost = require('../cost-sharing.js');
 
 // given the current balances and a target distribution (e.g. splitting a tab),
 // return a set of 'transfer instructions' explaining how to redistribute funds
 // among a group.
-describe('Generate Transfer Instructions', () => {
+describe('Cost Sharing Instructions', () => {
   it('should generate the correct transfer instructions for a one to any redistribution', (done) => {
     const distribution = {
       seth: '1/3',
@@ -33,7 +33,7 @@ describe('Generate Transfer Instructions', () => {
       amount: 3,
     }];
 
-    const result = generateTransferInstructions(distribution, balances);
+    const result = shareCost(distribution, balances);
 
     expect(result.length).to.equal(2);
 
@@ -65,7 +65,7 @@ describe('Generate Transfer Instructions', () => {
       amount: 1,
     }];
 
-    const result = generateTransferInstructions(distribution, balances);
+    const result = shareCost(distribution, balances);
 
     expect(result.length).to.equal(2);
 
@@ -103,7 +103,7 @@ describe('Generate Transfer Instructions', () => {
       amount: 1,
     }];
 
-    const result = generateTransferInstructions(distribution, balances);
+    const result = shareCost(distribution, balances);
 
     expect(result.length).to.equal(3);
 

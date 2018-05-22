@@ -13,13 +13,33 @@ In this project, the developer is asked to write a function that passes the set 
 
 `npm run test`
 
+
 You can find the source for the tests in [test/test.js](test/test.js).
 
-The tests call a module, pass it some data, and expect in return a set of JSON 'transfer instructions' describing how to redistribute funds between people according to ratios provided by the user (similar to a cost-sharing app). The goal is to get the tests to pass. 
+The test calls a module, passes it some data, and expects a set of JSON 'transfer instructions' describing how to redistribute funds between people according to ratios provided by the user (similar to a cost-sharing app). For instance, given the following inputs:
+
+`distribution = {
+  joe: '1/2',
+  bob: '1/2'
+}
+
+balances = {
+  joe: 5,
+  bob: 1
+}`
+
+the transfer instructions would be:
+
+`{
+  from: 'joe',
+  to: 'bob',
+  amount: 2,
+}`
+
+All you know is that the test has to pass. A naive solution is included in the code.
 
 #### Solution
 
-A naive solution is included in the code.
 This is a fun example of a back-end coding challenge in Javascript that also demonstrates the dilemmas a developer faces when defending a multi-hour project like this. Javascript projects are a universe - when should you begin to stop, and step away from a solution?
 
 The naive answer simply appeals to the principles of **Document First, Test Driven Development**. While there may be innumerable ways in which the solution can be improved, the tests are passing and therefore the code is complete.

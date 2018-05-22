@@ -3,7 +3,10 @@
   "scripts": {
     "pretest": "eslint --ignore-path .gitignore .",
     "test": "lab",
-    "fib-test": "lab test/fib_test.js",
+    "costshare-test": "lab test/test.js",
+    "fib-test": "lab test/fib-test.js",
+    "hello-test": "lab test/hello-test.js",
+    "string-test": "lab test/string-test.js",
     "test:watch": "fsmonitor -s -p '+*.js' npm run test"
   },
   "version": "0.1.0",
