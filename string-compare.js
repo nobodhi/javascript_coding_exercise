@@ -1,18 +1,27 @@
 /**
-Common string compaure interview questions written in JS.
+Common string compare interview questions written in JS.
 
-@example
-// herp derp blah
-*/
-const greeting1 = 'hello';
-const greeting2 = 'well hello there';
-
-exports.foo = (e) => {
-  const newGreeting = greeting1 + e;
-  return newGreeting;
+/**
+ * @function init
+ * @param {string} e
+ * @example
+ * stringCompare.containsUnique('asdfghjkl;');
+ */
+exports.containsUnique = (e) => {
+  // are all the characters in the string unique? assume it's an enumerable character set
+  let charsArr = [];
+  charsArr = e.split('');
+  let result = true;
+  charsArr = charsArr.reduce((acc, val) => {
+    acc[val] = acc[val] === undefined ? 1 : acc[val] += 1;
+    if (acc[val] > 1) result = false;
+    return acc;
+  }, {});
+  console.log(charsArr);
+  return result;
 };
 
-exports.bar = (e) => {
-  const newGreeting = greeting2 + e;
-  return newGreeting;
+// TODO
+exports.palindrome = (e) => {
+  return e;
 };

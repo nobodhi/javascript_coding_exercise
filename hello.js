@@ -1,15 +1,17 @@
 /**
-Common string compaure interview questions written in JS.
-
+interview questions written in JS.
 @example
-// herp derp blah
+//inputs and outputs
 */
-const greeting = 'hello ';
+const greeting1 = 'hello ';
+const greeting2 = 'well hello there ';
 
-// populates the nth element of the array and returns it
-function foo(e) {
-  const newGreeting = greeting + e;
+exports.foo = (e) => {
+  const newGreeting = greeting1 + e;
   return newGreeting;
-}
+};
 
-module.exports = foo;
+exports.bar = (e) => {
+  const newGreeting = greeting2 + e;
+  return newGreeting;
+};
