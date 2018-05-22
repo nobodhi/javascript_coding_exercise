@@ -46,7 +46,7 @@ The naive answer simply appeals to the principles of **Document First, Test Driv
 
 ### Fibonacci Series
 
-In this exercise the test is located in [./test/fib-test.js](./test/fib-test.js). The fibonacci module must return the Fibonacci sequence to N+1 places for any given N. The series is checked against the formula
+In this exercise the test is located in [test/fib-test.js](test/fib-test.js). The fibonacci module must return the Fibonacci sequence to N+1 places for any given N. The series is checked against the formula
 
 `Sum(F(n)) = F(n+2)-1`
 
@@ -57,7 +57,7 @@ Fibonacci can be solved iteratively or recursively. In the latter case, it's imp
 
 ### Is Unique
 
-This is exercise 1.1. from **Cracking the Coding Interview**. The test is located in [./test/string-test.js](./test/string-test.js). The module should return true if all the characters in a string are unique. Hints include "consider a hash table" and "assume ascii (or not)".
+This is exercise 1.1. from **Cracking the Coding Interview**. The test is located in [test/string-test.js](test/string-test.js). The module should return true if all the characters in a string are unique. Hints include "consider a hash table" and "assume ascii (or not)".
 
 #### Solution
 
