@@ -53,7 +53,7 @@ This section includes problems from the book **Cracking the Coding Interview**. 
 
 ### Is Unique
 
-(exercise 1.1) write a function that determines if all the characters in a string are unique. The module should return true if all the characters in a string are unique. Hints included in the text "consider a hash table" and "assume ascii".
+(Exercise 1.1) write a function that determines if all the characters in a string are unique. The module should return true if all the characters in a string are unique. Hints included in the text "consider a hash table" and "assume ascii".
 
 #### Solution
 
@@ -66,6 +66,14 @@ Again you can approach this iteratively using a *for* loop, or in a functional s
 #### Solution
 
 The answer depends on what you want to do about whitespace and capitalization. Regardless whether we are concerned with whitespace or capitalization, in the general case a naive solution simply sorts the characters in the two strings and checks whether they are the same.
+
+### Palindrome Permutation
+
+(Exercise 1.4). Determine if a string is a permutation of a palindrome. For instance, 'bbaa' is a permutation of 'Abba', which is a palindrome.
+
+#### Solution
+
+We want to find whether the string can be permuted such that it produces a palindrome. Proceeding from the solution in [Check Permutation](#Check Permutation), the solution hinges on the symmetry of the data structure. Whether there are an even number of characters or an odd number of characters, a palindrome arrangement will be symmetric about the center, with a count of 2 for each paired character.
 
 
 ## Common Problems
@@ -80,4 +88,4 @@ In this exercise the test is located in [test/fib-test.js](test/fib-test.js). Th
 
 #### Solution
 
-Fibonacci can be solved iteratively or recursively. In the latter case, it's important to make sure you're not repeating work. The solution in fibonacci.js addresses this using a global variable inside the module. This is known as 'memoization'.
+Fibonacci can be solved iteratively or recursively. In the latter case, it's important to make sure you're not repeating work. The solution in [fibonacci.js](fibonacci.js) addresses this using a global variable inside the module. This is known as 'memoization'.

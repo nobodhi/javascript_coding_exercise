@@ -39,4 +39,33 @@ describe('String compare tests', () => {
     done();
   });
 
+  // isPalindromePermutation, ex 1.4
+  // even
+  it('should find this even-length string to be a palindrome permutatios', (done) => {
+    const exp1 = 'asdfasdf'.toLowerCase();
+    const result = stringCompare.isPalindromePermutation(exp1);
+    expect(result).to.equal(true);
+    done();
+  });
+  it('should not find this even-length string to be a palindrome permutation', (done) => {
+    const exp1 = 'asdfasd;'.toLowerCase();
+    const result = stringCompare.isPalindromePermutation(exp1);
+    expect(result).to.equal(false);
+    done();
+  });
+  // odd
+  it('should find this odd-length string to be a palindrome permutatios', (done) => {
+    const exp1 = 'asdfasdf;'.toLowerCase();
+    const result = stringCompare.isPalindromePermutation(exp1);
+    expect(result).to.equal(true);
+    done();
+  });
+  it('should not find this odd-length string to be a palindrome permutation', (done) => {
+    const exp1 = 'asdfas;x'.toLowerCase();
+    const result = stringCompare.isPalindromePermutation(exp1);
+    expect(result).to.equal(false);
+    done();
+  });
+
+
 });
