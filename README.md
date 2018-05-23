@@ -6,7 +6,7 @@ Following are some fun puzzles and answers I've come across while interviewing a
 
 The problems are not described in great depth here. Instead, every problem is accompanied by a test script, and the challenge is to get the test script to pass. This is the principle behind **Document First, Test Driven Development**. All the requirements are found in the test case, and the developer's only job is to get the tests to pass.
 
-Tests are currently using npm modules "lab* and *code".
+Tests are currently using npm modules "lab" and "code".
 
 
 ## Coding Projects
@@ -53,11 +53,11 @@ This section includes problems from the book **Cracking the Coding Interview**. 
 
 ### Is Unique
 
-(exercise 1.1) write a function that determines if all the characters in a string are unique. The module should return true if all the characters in a string are unique. Hints include "consider a hash table" and "assume ascii (or not)".
+(exercise 1.1) write a function that determines if all the characters in a string are unique. The module should return true if all the characters in a string are unique. Hints included in the text "consider a hash table" and "assume ascii".
 
 #### Solution
 
-Again you can approach this iteratively using a *for* loop, or in a functional style using ES6 array functions.
+Again you can approach this iteratively using a *for* loop, or in a functional style using ES6 array functions. A functional solution is included in string-test.js.
 
 ### Check Permutation
 
@@ -65,7 +65,8 @@ Again you can approach this iteratively using a *for* loop, or in a functional s
 
 #### Solution
 
-Regardless whether we are concerned with whitespace or capitalization, in the general case a naive solution simply sorts the two strings and checks whether they are the same.
+The answer depends on what you want to do about whitespace and capitalization. Regardless whether we are concerned with whitespace or capitalization, in the general case a naive solution simply sorts the characters in the two strings and checks whether they are the same.
+
 
 ## Common Problems
 
@@ -79,4 +80,4 @@ In this exercise the test is located in [test/fib-test.js](test/fib-test.js). Th
 
 #### Solution
 
-Fibonacci can be solved iteratively or recursively. In the latter case, it's important to make sure you're not repeating work. This solution handles that using a global variable inside the module. This is known as 'memoization'.
+Fibonacci can be solved iteratively or recursively. In the latter case, it's important to make sure you're not repeating work. The solution in fibonacci.js addresses this using a global variable inside the module. This is known as 'memoization'.
