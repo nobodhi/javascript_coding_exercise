@@ -73,7 +73,7 @@ The answer depends on what you want to do about whitespace and capitalization. R
 
 #### Solution
 
-We want to find whether the string can be permuted such that it produces a palindrome. Proceeding from the solution in [Check Permutation](#Check Permutation), the solution hinges on the symmetry of the data structure. Whether there are an even number of characters or an odd number of characters, a palindrome arrangement will be symmetric about the center, with a count of 2 for each paired character.
+We want to find whether the string can be permuted such that it produces a palindrome. Proceeding from the solution in [Check Permutation](#check-permutation), the solution hinges on the symmetry of the data structure. Whether there are an even number of characters or an odd number of characters, a palindrome arrangement will be symmetric about the center, with a count of 2 for each paired character.
 
 
 ## Common Problems
