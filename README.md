@@ -49,7 +49,7 @@ The naive answer simply appeals to the principles of **Document First, Test Driv
 
 ## Cracking the Coding Interview
 
-This section includes problems from the book **Cracking the Coding Interview**. The string tests are located in [test/string-test.js](test/string-test.js).
+This section includes problems from the book **Cracking the Coding Interview**. The string tests are located in [test/string-.js](test/string-test.js).
 
 ### Is Unique
 
@@ -57,7 +57,7 @@ This section includes problems from the book **Cracking the Coding Interview**. 
 
 #### Solution
 
-Again you can approach this iteratively using a *for* loop, or in a functional style using ES6 array functions. A functional solution is included in string-test.js.
+Again you can approach this iteratively using a *for* loop, or in a functional style using ES6 array functions. A functional solution is included in [string-compare.js](string-compare.js).
 
 ### Check Permutation
 
@@ -73,7 +73,7 @@ The answer depends on what you want to do about whitespace and capitalization. R
 
 #### Solution
 
-We want to find whether the string can be permuted such that it produces a palindrome. Proceeding from the solution in [Check Permutation](#check-permutation), the solution hinges on the symmetry of the data structure. Whether there are an even number of characters or an odd number of characters, a palindrome arrangement will be symmetric about the center, with a count of 2 for each paired character.
+We want to find whether the string can be permuted such that it produces a palindrome. Proceeding from the solution in [Check Permutation](#check-permutation), the solution hinges on the symmetry of the data structure. Whether there are an even number of characters or an odd number of characters, a palindrome arrangement will be symmetric about the center, with each paired character having a number of occurrences equal to a multiple of 2.
 
 
 ## Common Problems
