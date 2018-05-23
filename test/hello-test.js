@@ -5,7 +5,7 @@ const lab = exports.lab = Lab.script(); // TODO no-multi-assign, prefer-desctruc
 const describe = lab.describe;
 const it = lab.it;
 const expect = Code.expect;
-const hello = require('../hello.js');
+const hello = require('../hello.js'); // this is the module being tested
 
 describe('String compare test', () => {
   it('should say hello', (done) => {

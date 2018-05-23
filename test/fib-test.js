@@ -5,7 +5,7 @@ const lab = exports.lab = Lab.script(); // TODO no-multi-assign, prefer-desctruc
 const describe = lab.describe;
 const it = lab.it;
 const expect = Code.expect;
-const fibonacci = require('../fibonacci.js');
+const fibonacci = require('../fibonacci.js'); // this is the module being tested
 
 // TODO add a test that N can only be a natural number.
 describe('Fibonacci sequence test', () => {
