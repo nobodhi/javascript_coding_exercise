@@ -54,7 +54,7 @@ exports.isPalindromePermutation = (e) => {
   let charCounts = {};
   charsArr = e.split('');
   let result = true;
-  
+
   // clever short circuit. we look for an odd number in the count value. if we find
   // more than one of them we return false. this relies on knowing whether we've
   // found the first one. to do that, we toggle our boolean such that any subsequent
@@ -67,15 +67,14 @@ exports.isPalindromePermutation = (e) => {
 
   const isEven = (charCounts.length % 2 === 0);
   let foundOdd = false;
-  
+
   // TODO Object.keys doesn't let you break and the object is not iterable. 
   // can it be converted back to an array? is there a better way to implement a dictionary?
   Object.keys(charCounts).forEach((key) => {
     if (charCounts[key] % 2 === 1) {
       // we found an odd number
-      if (!isEven && foundOdd) result = false; // if odd, ONE odd result is allowed
-      if (isEven) result = false; // if even, no odd results are allowed
-
+      if (!isEven && foundOdd) result = false; // if array length is odd, ONE odd result is allowed
+      if (isEven) result = false; // if array length is even, NO odd results are allowed
       foundOdd = true;
     }
     console.log(key, foundOdd, result);
