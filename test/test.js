@@ -1,7 +1,7 @@
 const Lab = require('lab');
 const Code = require('code');
-// TODO prefer-desctructuring, no-multi-assign
-const lab = exports.lab = Lab.script();
+
+const lab = exports.lab = Lab.script(); // TODO no-multi-assign, prefer-destructuring
 const describe = lab.describe;
 const it = lab.it;
 const expect = Code.expect;

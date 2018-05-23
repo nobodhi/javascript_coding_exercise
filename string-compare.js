@@ -47,7 +47,7 @@ exports.isPermutation = (s1, s2) => {
  * stringCompare.isPalindromePermutation('I am Lord Voldemort', 'Tom Marvolo Riddle ');
  */
 exports.isPalindromePermutation = (e) => {
-  // if there are an even number of characters then all of them will have count of 2
+  // if there are an even number of characters then all counts will ba a multiple of 2.
   // otherwise, one of them will have a count of 1. we'll just do this intuitively in a
   // series of loops, for O(n).
   let charsArr = [];
