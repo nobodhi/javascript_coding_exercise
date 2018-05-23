@@ -1,7 +1,7 @@
 {
   "name": "javascript-coding-exercise",
   "scripts": {
-    "pretest": "eslint --ignore-path .gitignore .",
+    "eslint-test": "eslint --ignore-path .gitignore .",
     "test": "lab",
     "costshare-test": "lab test/test.js",
     "fib-test": "lab test/fib-test.js",

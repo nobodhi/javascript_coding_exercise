@@ -31,8 +31,6 @@ exports.containsUnique = (e) => {
 exports.isPermutation = (s1, s2) => {
   const s1Arr = s1.split('').sort();
   const s2Arr = s2.split('').sort();
-  console.log(s1Arr);
-  console.log(s2Arr);
   if (s1Arr.length !== s2Arr.length) return false;
   // loop thru one of the arrays and check element by element
   for (let i = 0; i < s1Arr.length; i += 1) {

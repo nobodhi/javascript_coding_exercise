@@ -21,9 +21,9 @@ The test calls a module, passes it some data, and expects a set of JSON 'transfe
 `distribution = {
   joe: '1/2',
   bob: '1/2'
-}
+}`
 
-balances = {
+`balances = {
   joe: 5,
   bob: 1
 }`
@@ -33,7 +33,7 @@ the transfer instructions would be:
 `{
   from: 'joe',
   to: 'bob',
-  amount: 2,
+  amount: 2
 }`
 
 All you know is that the test has to pass. A naive solution is included in the code.
