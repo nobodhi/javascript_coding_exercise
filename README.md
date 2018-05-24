@@ -53,7 +53,7 @@ This section includes problems from the book **Cracking the Coding Interview**. 
 
 ### Is Unique
 
-(Exercise 1.1) write a function that determines if all the characters in a string are unique. The module should return true if all the characters in a string are unique. Hints included in the text "consider a hash table" and "assume ascii".
+(1.1) Write a function that determines if all the characters in a string are unique. The module should return true if all the characters in a string are unique. Hints included in the text "consider a hash table" and "assume ascii".
 
 #### Solution
 
@@ -61,7 +61,7 @@ Again you can approach this iteratively using a *for* loop, or in a functional s
 
 ### Check Permutation
 
-(Exercise 1.2) write a function/module that checks if two strings are permutations of each other.
+(1.2) Write a function/module that checks if two strings are permutations of each other.
 
 #### Solution
 
@@ -69,11 +69,24 @@ The answer depends on what you want to do about whitespace and capitalization. R
 
 ### Palindrome Permutation
 
-(Exercise 1.4). Determine if a string is a permutation of a palindrome. For instance, 'bbaa' is a permutation of 'Abba', which is a palindrome.
+(1.4) Determine if a string is a permutation of a palindrome. For instance, 'aabb' is a permutation of 'Abba', which is a palindrome.
 
 #### Solution
 
 We want to find whether the string can be permuted such that it produces a palindrome. Proceeding from the solution in [Check Permutation](#check-permutation), the solution hinges on the symmetry of the data structure. Whether there are an even number of characters or an odd number of characters, a palindrome arrangement will be symmetric about the center, with each paired character having a number of occurrences equal to a multiple of 2.
+
+### One Away
+
+(1.5) Determine if two strings are one edit apart, i.e. a single character edit will transform one string into the other. E.g.:
+  
+>oneAway('pale', 'bale');  
+># => true  
+>oneAway('pale', 'ball');  
+># => false  
+
+#### Solution
+
+The types of changes in a stateless system are *insert, update and delete*. In the insert/delete case the strings will have different length (+/- 1) and will be identical except for a single character. In the update case, the strings will have the same length and will also be identical except for a single character.
 
 
 ## Common Problems

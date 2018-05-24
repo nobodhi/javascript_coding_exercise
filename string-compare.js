@@ -44,7 +44,7 @@ exports.isPermutation = (s1, s2) => {
  * @param {string} s1
  * @param {string} s2
  * @example
- * stringCompare.isPalindromePermutation('I am Lord Voldemort', 'Tom Marvolo Riddle ');
+ * stringCompare.isPalindromePermutation('aabb');
  */
 exports.isPalindromePermutation = (e) => {
   // if there are an even number of characters then all counts will ba a multiple of 2.

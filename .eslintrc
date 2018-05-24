@@ -1,7 +1,8 @@
 {
-    "extends": "airbnb"
+    "extends": "airbnb",
+    "rules": 
+    {
+        "prefer-destructuring": 0,
+        "no-multi-assign": 0
+    }
 }
-"rules": {
-    "prefer-destructuring": 0,
-    "no-multi-assign": 0
-  }

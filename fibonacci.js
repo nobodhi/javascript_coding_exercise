@@ -18,7 +18,8 @@ fibonacci(element);
 */
 let result = [];
 
-// populates the nth element of the array and returns it
+// helper function: populates the nth element of the array and returns it. problems:
+// call stack only allows 12500 iterations. memoization depends on side effects.
 function fibonacci(e) {
   if (e <= 1) {
     result[e] = 1;
