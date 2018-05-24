@@ -79,10 +79,8 @@ We want to find whether the string can be permuted such that it produces a palin
 
 (1.5) Determine if two strings are one edit apart, i.e. a single character edit will transform one string into the other. E.g.:
   
->oneAway('pale', 'bale');  
-># => true  
->oneAway('pale', 'ball');  
-># => false  
+>oneAway('pale', 'bale'); // true  
+>oneAway('pale', 'ball'); // false  
 
 #### Solution
 
