@@ -1,8 +1,5 @@
-const _ = require('lodash');
-// const BigNumber = require('bignumber.js'); 
-
 /**
- TODO: this module should pass the tests in /test/test.js. A naive solution is included below.
+ this module should pass the tests in /test/test.js. A naive solution is included below.
 
   * @example
   shareCost(distribution, balances)
@@ -16,6 +13,9 @@ const _ = require('lodash');
     amount: 3
   }]
 */
+const _ = require('lodash');
+// const BigNumber = require('bignumber.js');
+
 function shareCost(distribution, balances) {
   // set up variables for the two users, the total balances and the transfer instructions.
   const instructions = [];

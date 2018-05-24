@@ -10,13 +10,13 @@ const hello = require('../hello.js'); // this is the module being tested
 describe('Hello world test', () => {
   it('should say "hello"', (done) => {
     const name = 'joe';
-    const result = hello.foo(name);
+    const result = hello.shortGreeting(name);
     expect(result).to.equal('hello joe');
     done();
   });
   it('should say "well hello there"', (done) => {
     const name = 'joe';
-    const result = hello.bar(name);
+    const result = hello.longGreeting(name);
     expect(result).to.equal('well hello there joe');
     done();
   });

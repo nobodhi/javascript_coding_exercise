@@ -1,5 +1,5 @@
 /**
-Common string compare interview questions written in JS.
+Strings related interview questions written in JS. Test located in test/string-test.js.
  * @function containsUnique
  * @param {string} e
  * @returns boolean
