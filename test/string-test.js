@@ -41,7 +41,7 @@ describe('String compare tests', () => {
 
   // isPalindromePermutation, ex 1.4
   // even
-  it('should find this even-length string to be a palindrome permutatios', (done) => {
+  it('should find this even-length string to be a palindrome permutation', (done) => {
     const exp1 = 'asdfasdf'.toLowerCase();
     const result = stringCompare.isPalindromePermutation(exp1);
     expect(result).to.equal(true);
@@ -54,7 +54,7 @@ describe('String compare tests', () => {
     done();
   });
   // odd
-  it('should find this odd-length string to be a palindrome permutatios', (done) => {
+  it('should find this odd-length string to be a palindrome permutation', (done) => {
     const exp1 = 'asdfasdf;'.toLowerCase();
     const result = stringCompare.isPalindromePermutation(exp1);
     expect(result).to.equal(true);

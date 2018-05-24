@@ -55,8 +55,8 @@ This section includes problems from the book **Cracking the Coding Interview**. 
 
 (1.1) Write a function that determines if all the characters in a string are unique. The module should simply return true or false. For example:
 
->stringCompare.isUnique('123456'); // returns true
->stringCompare.isUnique('123455'); // returns false
+>stringCompare.isUnique('123456'); // returns true  
+>stringCompare.isUnique('123455'); // returns false  
 
 #### Solution
 
@@ -68,7 +68,7 @@ We can approach this iteratively using a *for* loop, or in a functional style us
 
 #### Solution
 
-The answer depends on what you want to do about whitespace and capitalization. Regardless whether we are concerned with whitespace or capitalization, in the general case a naive solution simply sorts the characters in the two strings and checks whether they are the same.
+The answer depends on what you want to do about whitespace and capitalization. Regardless whether we are concerned with whitespace or capitalization, in the general case a naive solution simply sorts the characters into two string arrays and checks whether they are the same.
 
 ### Palindrome Permutation
 

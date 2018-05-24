@@ -1,12 +1,11 @@
 /**
 Common string compare interview questions written in JS.
-
-/**
  * @function containsUnique
  * @param {string} e
+ * @returns boolean
  * @example
- * stringCompare.containsUnique('asdfghjkl;');
- */
+ * stringCompare.containsUnique('123455'); // false
+*/
 exports.containsUnique = (e) => {
   // are all the characters in the string unique? assume it's an enumerable character set
   let charsArr = [];
@@ -68,7 +67,7 @@ exports.isPalindromePermutation = (e) => {
   const isEven = (charCounts.length % 2 === 0);
   let foundOdd = false;
 
-  // TODO Object.keys doesn't let you break and the object is not iterable. 
+  // TODO Object.keys doesn't let you break and the object is not iterable.
   // can it be converted back to an array? is there a better way to implement a dictionary?
   Object.keys(charCounts).forEach((key) => {
     if (charCounts[key] % 2 === 1) {
