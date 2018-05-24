@@ -53,11 +53,14 @@ This section includes problems from the book **Cracking the Coding Interview**. 
 
 ### Is Unique
 
-(1.1) Write a function that determines if all the characters in a string are unique. The module should return true if all the characters in a string are unique. Hints included in the text "consider a hash table" and "assume ascii".
+(1.1) Write a function that determines if all the characters in a string are unique. The module should simply return true or false. For example:
+
+>stringCompare.isUnique('123456'); // returns true
+>stringCompare.isUnique('123455'); // returns false
 
 #### Solution
 
-Again you can approach this iteratively using a *for* loop, or in a functional style using ES6 array functions. A functional solution is included in [string-compare.js](string-compare.js).
+We can approach this iteratively using a *for* loop, or in a functional style using ES6 array functions. A functional solution is included in [string-compare.js](string-compare.js).
 
 ### Check Permutation
 
@@ -84,7 +87,7 @@ We want to find whether the string can be permuted such that it produces a palin
 
 #### Solution
 
-The types of changes in a stateless system are *insert, update and delete*. In the insert/delete case the strings will have different length (+/- 1) and will be identical except for a single character. In the update case, the strings will have the same length and will also be identical except for a single character.
+The types of changes in a stateless system like a database or a REST API are *insert, update and delete*. In the insert/delete case the strings will have different length, plus or minus one, but will be otherwise identical. In the update case the strings will have the same length but will be otherwise identical except for a single character difference. We can therefore use the same singleton pattern as we used in the [Palindrome Permutation](#palindrome-permutation), checking for changes in any character element and allowing one and only one change.
 
 
 ## Common Problems
