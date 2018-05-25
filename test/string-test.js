@@ -67,5 +67,20 @@ describe('String compare tests', () => {
     done();
   });
 
-
+  // one Edit Apart, ex 1.1
+  it('should return true for strings within one edit', (done) => {
+    const s1 = 'pale';
+    const s2 = 'bale';
+    const result = stringCompare.oneEdit(s1, s2);
+    expect(result).to.equal(true);
+    done();
+  });
+  // one Edit Apart, ex 1.1
+  it('should return false for strings with two changes', (done) => {
+    const s1 = 'pale';
+    const s2 = 'ball';
+    const result = stringCompare.oneEdit(s1, s2);
+    expect(result).to.equal(false);
+    done();
+  });
 });

@@ -49,7 +49,7 @@ The naive answer simply appeals to the principles of **Document First, Test Driv
 
 ## Cracking the Coding Interview
 
-This section includes problems from the book **Cracking the Coding Interview**. The string tests are located in [test/string-.js](test/string-test.js).
+This section includes problems from the book **Cracking the Coding Interview**. The string tests are located in [test/string-test.js](test/string-test.js).
 
 ### Is Unique
 
@@ -78,16 +78,16 @@ The answer depends on what you want to do about whitespace and capitalization. R
 
 We want to find whether the string can be permuted such that it produces a palindrome. Proceeding from the solution in [Check Permutation](#check-permutation), the solution hinges on the symmetry of the data structure. Whether there are an even number of characters or an odd number of characters, a palindrome arrangement will be symmetric about the center, with each paired character having a number of occurrences equal to a multiple of 2.
 
-### One Away
+### One Edit Apart
 
 (1.5) Determine if two strings are one edit apart, i.e. a single character edit will transform one string into the other. E.g.:
   
->oneAway('pale', 'bale'); // true  
->oneAway('pale', 'ball'); // false  
+>oneEdit('pale', 'bale'); // true  
+>oneEdit('pale', 'ball'); // false  
 
 #### Solution
 
-The types of changes in a stateless system like a database or a REST API are *insert, update and delete*. In the insert/delete case the strings will have different length, plus or minus one, but will be otherwise identical. In the update case the strings will have the same length but will be otherwise identical except for a single character difference. We can therefore use the same singleton pattern as we used in the [Palindrome Permutation](#palindrome-permutation), checking for changes in any character element and allowing one and only one change.
+The types of changes in a stateless system like a database or a REST API are *insert, update and delete*. In the insert/delete case the strings will have different length, plus or minus one, but will be otherwise identical. In the update case the strings will have the same length and be otherwise identical except for a single character difference. We can therefore use the same singleton pattern as we used in the [Palindrome Permutation](#palindrome-permutation), checking for changes in any character element and allowing one and only one change.
 
 
 ## Common Problems

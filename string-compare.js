@@ -47,17 +47,13 @@ exports.isPermutation = (s1, s2) => {
  */
 exports.isPalindromePermutation = (e) => {
   // if there are an even number of characters then all counts will ba a multiple of 2.
-  // otherwise, one of them will have a count of 1. we'll just do this intuitively in a
-  // series of loops, for O(n).
+  // otherwise, one of them will have a count of 1.
   let charsArr = [];
   let charCounts = {};
   charsArr = e.split('');
   let result = true;
 
-  // clever short circuit. we look for an odd number in the count value. if we find
-  // more than one of them we return false. this relies on knowing whether we've
-  // found the first one. to do that, we toggle our boolean such that any subsequent
-  // hit will trigger an immediate return. otherwise, return success.
+  // singleton
   charCounts = charsArr.reduce((acc, val) => {
     acc[val] = acc[val] === undefined ? 1 : acc[val] += 1;
     return acc;
@@ -67,8 +63,6 @@ exports.isPalindromePermutation = (e) => {
   const isEven = (charCounts.length % 2 === 0);
   let foundOdd = false;
 
-  // TODO Object.keys doesn't let you break and the object is not iterable.
-  // can it be converted back to an array? is there a better way to implement a dictionary?
   Object.keys(charCounts).forEach((key) => {
     if (charCounts[key] % 2 === 1) {
       // we found an odd number
@@ -79,4 +73,41 @@ exports.isPalindromePermutation = (e) => {
     console.log(key, foundOdd, result);
   });
   return result;
+};
+
+/**
+ * @function oneEdit
+ * @param {string} s1
+ * @param {string} s2
+ * @example
+ * oneEdit('pale', 'bale'); // true
+ * oneEdit('pale', 'ball'); // false
+ */
+exports.oneEdit = (s1, s2) => {
+  const m = s1.toString().length;
+  const n = s2.toString().length;
+  let editCount = 0;
+  let i = 0;
+  let j = 0;
+  if (Math.abs(m - n) > 1) {
+    return false;
+  }
+  do {
+    const char1 = s1.charAt(i);
+    const char2 = s2.charAt(j);
+    console.log(char1, char2);
+    // if we locate a character difference, allow up to one edit. if the strings are different
+    // lengths, attempt to re-align them for the next loop.
+    if (char1 !== char2) {
+      editCount += 1;
+      if (editCount > 1) return false;
+      if (m >= n) i += 1;
+      if (n >= m) j += 1;
+    } else {
+      i += 1;
+      j += 1;
+    }
+  } while (i < m && j < n);
+
+  return true;
 };
