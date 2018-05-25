@@ -1,5 +1,4 @@
-/**
-Strings related interview questions written in JS. Test located in test/string-test.js.
+/** Strings related interview questions written in JS. Test located in test/string-test.js.
  * @function containsUnique
  * @param {string} e
  * @returns boolean
@@ -20,7 +19,7 @@ exports.containsUnique = (e) => {
   return result;
 };
 
-/**
+/** Determine whether two strings are permuations of one another.
  * @function isPermutation
  * @param {string} s1
  * @param {string} s2
@@ -38,10 +37,9 @@ exports.isPermutation = (s1, s2) => {
   return true;
 };
 
-/**
+/** Determine if a string is a permutation of a palindrome.
  * @function isPalindromePermutation
- * @param {string} s1
- * @param {string} s2
+ * @param {string} s
  * @example
  * stringCompare.isPalindromePermutation('aabb');
  */
@@ -75,7 +73,7 @@ exports.isPalindromePermutation = (e) => {
   return result;
 };
 
-/**
+/** Determine if two strings are a single edit away, i.e. Levenshtein distance <= 1.
  * @function oneEdit
  * @param {string} s1
  * @param {string} s2
