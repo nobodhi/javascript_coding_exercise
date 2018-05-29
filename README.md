@@ -49,7 +49,7 @@ The naive answer simply appeals to the principles of **Document First, Test Driv
 
 ## Cracking the Coding Interview
 
-This section includes problems from the book **Cracking the Coding Interview**. The string tests are located in [test/string-test.js](test/string-test.js) and the solutions in [string-compare.js](string-compare.js).
+This section includes problems and solutions from the section on data structures along with tests. The string tests are located in [test/string-test.js](test/string-test.js) and the solutions in [string-compare.js](string-compare.js).
 
 ### Is Unique
 
