@@ -5,7 +5,7 @@
     "test": "lab",
     "costshare-test": "lab test/test.js",
     "fib-test": "lab test/fib-test.js",
-    "hello-test": "lab test/hello-test.js",
+    "hello-test": "mocha test/hello-test.js",
     "string-test": "lab test/string-test.js",
     "test:watch": "fsmonitor -s -p '+*.js' npm run test"
   },
@@ -20,9 +20,11 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.8.2"
+    "eslint-plugin-react": "^7.8.2",
+    "mocha": "^5.2.0"
   }
 }
