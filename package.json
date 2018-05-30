@@ -2,8 +2,8 @@
   "name": "javascript-coding-exercise",
   "scripts": {
     "eslint-test": "eslint --ignore-path .gitignore .",
-    "test": "lab",
-    "costshare-test": "lab test/test.js",
+    "test": "mocha",
+    "costshare-test": "mocha test/test.js",
     "fib-test": "mocha test/fib-test.js",
     "hello-test": "mocha test/hello-test.js",
     "string-test": "mocha test/string-test.js",
@@ -13,10 +13,8 @@
   "private": true,
   "dependencies": {
     "bignumber.js": "^4.0.2",
-    "code": "^4.0.0",
     "eslint-config-airbnb": "^16.1.0",
     "fsmonitor": "^0.2.4",
-    "lab": "^13.1.0",
     "lodash": "^4.17.4"
   },
   "devDependencies": {

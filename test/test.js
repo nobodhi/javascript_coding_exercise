@@ -1,11 +1,7 @@
-const Lab = require('lab');
-const Code = require('code');
-
-const lab = exports.lab = Lab.script(); // TODO no-multi-assign, prefer-destructuring
-const describe = lab.describe;
-const it = lab.it;
-const expect = Code.expect;
+const chai = require('chai');
 const shareCost = require('../cost-sharing.js');
+
+const expect = chai.expect;
 
 // given the current balances and a target distribution (e.g. splitting a tab),
 // return a set of 'transfer instructions' explaining how to redistribute funds
@@ -38,8 +34,8 @@ describe('Cost Sharing Instructions', () => {
     expect(result.length).to.equal(2);
 
     // result array can be in any order, so check transfer instructions are present in the result
-    expect(expected).to.include(result[0]);
-    expect(expected).to.include(result[1]);
+    expect(expected).to.deep.include(result[0]);
+    expect(expected).to.deep.include(result[1]);
 
     done();
   });
@@ -70,8 +66,8 @@ describe('Cost Sharing Instructions', () => {
     expect(result.length).to.equal(2);
 
     // result array can be in any order, so check transfer instructions are present in the result
-    expect(expected).to.include(result[0]);
-    expect(expected).to.include(result[1]);
+    expect(expected).to.deep.include(result[0]);
+    expect(expected).to.deep.include(result[1]);
 
     done();
   });
@@ -108,9 +104,9 @@ describe('Cost Sharing Instructions', () => {
     expect(result.length).to.equal(3);
 
     // result array can be in any order, so check transfer instructions are present in the result
-    expect(expected).to.include(result[0]);
-    expect(expected).to.include(result[1]);
-    expect(expected).to.include(result[2]);
+    expect(expected).to.deep.include(result[0]);
+    expect(expected).to.deep.include(result[1]);
+    expect(expected).to.deep.include(result[2]);
 
     done();
   });
