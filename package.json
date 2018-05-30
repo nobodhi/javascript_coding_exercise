@@ -6,7 +6,7 @@
     "costshare-test": "lab test/test.js",
     "fib-test": "mocha test/fib-test.js",
     "hello-test": "mocha test/hello-test.js",
-    "string-test": "lab test/string-test.js",
+    "string-test": "mocha test/string-test.js",
     "test:watch": "fsmonitor -s -p '+*.js' npm run test"
   },
   "version": "0.1.0",

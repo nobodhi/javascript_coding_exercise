@@ -1,11 +1,7 @@
-const Lab = require('lab');
-const Code = require('code');
+const chai = require('chai');
+const stringCompare = require('../string-compare.js');
 
-const lab = exports.lab = Lab.script(); // TODO no-multi-assign, prefer-destructuring
-const describe = lab.describe;
-const it = lab.it;
-const expect = Code.expect;
-const stringCompare = require('../string-compare.js'); // this is the module being tested
+const expect = chai.expect;
 
 describe('String compare tests', () => {
 
