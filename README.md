@@ -85,6 +85,8 @@ We want to find whether the string can be permuted such that it produces a palin
 >oneEdit('pale', 'bale'); // true  
 >oneEdit('pale', 'ball'); // false  
 
+In this case, the strings are said to have a [Levenshtein distance](https://people.cs.pitt.edu/~kirk/cs1501/Pruhs/Spring2006/assignments/editdistance/Levenshtein%20Distance.htm) = 1.
+
 #### Solution
 
 The types of changes in a stateless system like a database or a REST API are *insert, update and delete*. We can model string editing using this pattern. In the insert/delete case the strings will have different length, plus or minus one, but will be otherwise identical. In the update case the strings will have the same length and be otherwise identical except for a single character difference. We can therefore use the same singleton pattern as we used in the [Palindrome Permutation](#palindrome-permutation), checking for changes in any character element and allowing one and only one change.
