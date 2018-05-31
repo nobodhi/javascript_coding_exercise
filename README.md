@@ -6,7 +6,7 @@ Following are some fun puzzles and answers I've come across while interviewing a
 
 The problems are not described in great depth here. Instead, every problem is accompanied by a test script, and the challenge is to get the test script to pass. This is the principle behind **Document First, Test Driven Development**. All the requirements are found in the test case, and the developer's only job is to get the tests to pass.
 
-Tests are currently using npm modules "lab" and "code".
+Tests will run in either lab/code or mocha/chai.
 
 
 ## Coding Projects
@@ -85,7 +85,7 @@ We want to find whether the string can be permuted such that it produces a palin
 >oneEdit('pale', 'bale'); // true  
 >oneEdit('pale', 'ball'); // false  
 
-In this case, the strings are said to have a [Levenshtein distance](https://people.cs.pitt.edu/~kirk/cs1501/Pruhs/Spring2006/assignments/editdistance/Levenshtein%20Distance.htm) = 1.
+In this case, the strings are said to have a [Levenshtein distance](https://github.com/trekhleb/javascript-algorithms/tree/master/src/algorithms/string/levenshtein-distance) = 1.
 
 #### Solution
 
