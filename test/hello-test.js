@@ -5,9 +5,8 @@ The should interface extends each object with a should property for assertion.
 const chai = require('chai');
 
 const expect = chai.expect;
-/* eslint-disable no-unused-vars */
+/* eslint-disable-next-line no-unused-vars */
 const should = chai.should();
-/* eslint-enable no-unused-vars */
 const assert = chai.assert;
 
 const hello = require('../hello.js'); // this is the module being tested

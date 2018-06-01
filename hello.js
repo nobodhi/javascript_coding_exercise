@@ -9,12 +9,12 @@ interview questions written in JS. test located in test/hello-test.js.
 const greeting1 = 'hello ';
 const greeting2 = 'well hello there ';
 
-exports.shortGreeting = (e) => {
+module.exports.shortGreeting = (e) => {
   const newGreeting = greeting1 + e;
   return newGreeting;
 };
 
-exports.longGreeting = (e) => {
+module.exports.longGreeting = (e) => {
   const newGreeting = greeting2 + e;
   return newGreeting;
 };

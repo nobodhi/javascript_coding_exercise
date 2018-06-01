@@ -1,3 +1,4 @@
 The Beatles,Radiohead,Eminem
 The Beatles,Depeche Mode,U2
-Radiohead,The Smiths
+Radiohead,The Smiths,Eminem
+The Smiths,Radiohead,Eminem
