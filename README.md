@@ -47,6 +47,20 @@ This is a fun example of a back-end coding challenge in Javascript that also dem
 
 The naive answer simply appeals to the principles of **Document First, Test Driven Development**. While there may be innumerable ways in which the solution can be improved, the tests are passing and therefore the code is complete.
 
+### Find Pairs
+
+In this exercise we are given a list of lists of music titles and asked to find all pairs that occur within these lists more than N times. E.g., in the following example:
+
+X, Y, Z
+X, Z
+
+Then pair (X, Z) occurs twice and pair (X, Y) occurs once. The test is located at [test/pairs-test.js](test/pairs-test.js)
+
+#### Solution
+
+This can be looked at as an SQL or MapReduce problem in which we first map the inputs into key-value pairs and then reduce them into a solution. We first map the users, titles, and user-title pairs. We then sort by title and loop through each title's users, querying for all pairs.
+
+
 ## Cracking the Coding Interview
 
 This section includes problems and solutions from the section on data structures along with tests. The string tests are located in [test/string-test.js](test/string-test.js) and the solutions in [string-compare.js](string-compare.js).
