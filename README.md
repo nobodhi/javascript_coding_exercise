@@ -54,7 +54,7 @@ In this exercise we are given a list of lists of music titles and asked to find 
 X, Y, Z  
 X, Z  
 
-Then pair (X, Z) occurs twice and pair (X, Y) occurs once. The test is located at [test/pairs-test.js](test/pairs-test.js)
+Then pair (X, Z) occurs twice and pair (X, Y) occurs once. The test is located at [test/pairs-test.js](test/pairs-test.js) and the solution at [find-pairs.js](find-pairs.js)
 
 #### Solution
 
@@ -63,7 +63,7 @@ This can be looked at as an SQL or MapReduce problem in which we first map the i
 
 ## Cracking the Coding Interview
 
-This section includes problems and solutions from the section on data structures along with tests. The string tests are located in [test/string-test.js](test/string-test.js) and the solutions in [string-compare.js](string-compare.js).
+This section includes problems and solutions from the section on data structures along with tests. The string tests are located in [test/string-test.js](test/string-test.js) and the solution is in [string-compare.js](string-compare.js).
 
 ### Is Unique
 
