@@ -51,8 +51,8 @@ The naive answer simply appeals to the principles of **Document First, Test Driv
 
 In this exercise we are given a list of lists of music titles and asked to find all pairs that occur within these lists more than N times. E.g., in the following example:
 
-X, Y, Z
-X, Z
+X, Y, Z  
+X, Z  
 
 Then pair (X, Z) occurs twice and pair (X, Y) occurs once. The test is located at [test/pairs-test.js](test/pairs-test.js)
 
