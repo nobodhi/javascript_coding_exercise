@@ -54,7 +54,7 @@ In this exercise we are given a list of lists of music titles (corresponding to 
 X, Y, Z  
 X, Z  
 
-The pairs (X, Z) and (Y, Z) occur twice, and the pair (X, Y) occurs once. The test is [test/pairs-test.js](test/pairs-test.js) and a sample data file is at [data/input.txt](data/input.txt). A naive, vanilla JS solution is here: [find-pairs.js](find-pairs.js).
+The pairs (X, Y) and (Y, Z) occur once, and the pair (X, Z) occurs twice. The test is [test/pairs-test.js](test/pairs-test.js) and a sample data file is at [data/input.txt](data/input.txt). A naive, vanilla JS solution is here: [find-pairs.js](find-pairs.js).
 
 #### Solution
 
