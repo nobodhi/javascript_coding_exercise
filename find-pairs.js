@@ -19,7 +19,7 @@ module.exports = (min) => {
   let pairs = [];
   let pairCounts = [];
   const final = [];
-  
+
   // assign an arbitrary userId and find all the [user, title] pairs.
   data.forEach((row, index) => {
     const titles = row.split(',');
