@@ -49,12 +49,12 @@ The naive answer simply appeals to the principles of **Document First, Test Driv
 
 ### Find Pairs
 
-In this exercise we are given a list of lists of music titles and asked to find all pairs that occur within these lists more than N times. E.g., in the following example:
+In this exercise we are given a list of lists of music titles (corresponding to titles that users have reviewed) and asked to find all pairs of titles that occur within these lists more than N times. E.g., in the following example:
 
 X, Y, Z  
 X, Z  
 
-Then pair (X, Z) occurs twice and pair (X, Y) occurs once. The test is [test/pairs-test.js](test/pairs-test.js) and a sample data file is at [data/input.txt](data/input.txt). A naive, vanilla JS solution is here: [find-pairs.js](find-pairs.js).
+Then pairs (X, Z) and (Y, Z) occur twice, and the pair (X, Y) occurs once. The test is [test/pairs-test.js](test/pairs-test.js) and a sample data file is at [data/input.txt](data/input.txt). A naive, vanilla JS solution is here: [find-pairs.js](find-pairs.js).
 
 #### Solution
 
