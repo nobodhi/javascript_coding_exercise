@@ -7,7 +7,6 @@
 */
 const fs = require('fs');
 
-
 module.exports = (min) => {
   const text = fs.readFileSync('./data/input.txt').toString('utf-8');
   const data = text.split('\n');
@@ -42,9 +41,8 @@ module.exports = (min) => {
     // console.log(thisTitle);
 
     // for every title, find all the user pairs. then remove that title from the working table.
-    currentTitles = workTable.filter((item) => {
-      return item[1] === thisTitle;
-    });
+    currentTitles = workTable.filter(item => item[1] === thisTitle);
+
     workTable.splice(0, currentTitles.length);
     currentTitles.forEach((user) => {
       // for each user who is associated with this title
@@ -60,24 +58,22 @@ module.exports = (min) => {
   /* eslint-enable no-loop-func */
 
   pairs = pairs.sort();
-  // console.log(pairs);
+  console.log(pairs);
 
   // First we count each pair.
   pairCounts = pairs.reduce((acc, val) => {
     acc[val] = acc[val] === undefined ? 1 : acc[val] += 1;
     return acc;
-  }, {});
+  }, []);
   // console.log(pairCounts);
 
-  // Next, we filter them by the user defined "min" value. TODO combine these steps?
+  // Next, we filter them by the user defined "min" value.
   Object.keys(pairCounts).forEach((key) => {
-    const u = { pair: key, count: pairCounts[key] };
-    // console.log(u);
-    if (u.count >= min) final.push(u);
+    const u = [key, pairCounts[key] ];
+    if (pairCounts[key] >= min) final.push(u);
   });
 
   // these are the pairs that occur at least "min" times.
   console.log(final);
   return final;
-
 };
