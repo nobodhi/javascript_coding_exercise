@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 
 class Node {
   constructor(key, data) {
@@ -10,167 +11,130 @@ class Node {
 
 /**
   * **********
-* @constructor
+  * @constructor
   * **********
 */
 class LRUCache {
-  constructor(capacity) {
-    this.capacity = capacity;
-    this.map = {};
+  constructor(maxCacheSize) {
+    this.maxCacheSize = maxCacheSize;
+    this.mappedPairs = {};
     this.head = null;
     this.tail = null;
+  }
+
+  // public methods
+
+  /**
+  * **********
+  * @public
+  * @method createNode
+  * @param {string} key
+  * @param {string} value
+  * @returns {void}
+  * **********
+  */
+
+  createNode(key, value) {
+    if (this.mappedPairs[key] !== undefined) {
+      const node = this.mappedPairs[key];
+      node.data = value;
+      this.removeNodeFromLinkedList(node);
+      this.addNodeToLinkedList(node);
+      return;
+    }
+
+    const node = new Node(key, value);
+    this.addNodeToLinkedList(node);
+    this.mappedPairs[key] = node;
   }
 
   /**
   * **********
   * @public
-  * @method get
-  * @param {number} key
-  * @returns {number}
+  * @method getNode
+  * @param {string} key
+  * @returns {string}
   * **********
   */
- get(key) {
-  // Existing item
-  if (this.map[key] !== undefined) {
 
-    // Move to the first place
-    const node = this.map[key];
-    this._moveFirst(node);
-
-    // Return
-    return node;
-
+ getNode(key) {
+    if (this.mappedPairs[key] !== undefined) {
+      const node = this.mappedPairs[key];
+      this.removeNodeFromLinkedList(node);
+      this.addNodeToLinkedList(node);
+      return node.value;
+    }
+    return null;
   }
 
-  // Not found
-  return -1;
-}
+  // private methods
 
-/**
-* **********
-* @public
-* @method set
-* @param {number} key
-* @param {number} value
-* @returns {void}
-* **********
-*/
-
-  set(key, value) {
-    // Existing item
-    if (this.map[key] !== undefined) {
-      // Move to the first place
-      const node = this.map[key];
-      node.data = value;
-      this._moveFirst(node);
-      return;
-    }
-
-    // Ensuring the cache is within capacity
-    if (Object.keys(this.map).length >= this.capacity) {
-      const id = this.tail.key;
-      this._removeLast();
-      delete this.map[id];
-    }
-
-    // New Item
-    const node = new Node(key, value);
-    this._add(node);
-    this.map[key] = node;
-  } 
   /**
   * **********
   * @private
-  * @method _add
+  * @method   addNodeToLinkedList(node) {
   * **********
   */
-  _add(node) {
-    /* eslint-disable no-param-reassign */
+  addNodeToLinkedList(node) {
     node.previous = null;
     node.next = null;
 
-    // first item
     if (this.head === null) {
-      this.head = node;
       this.tail = node;
+      this.head = node;
+    } else {
+      this.head.next = node;
+      node.prev = this.head;
+      this.head = node;
     }
-
-    // adding to existing items
-    this.head.previous = node;
-    node.next = this.head;
-    this.head = node;
+    if (Object.keys(this.mappedPairs).length > this.maxCacheSize) {
+      const id = this.tail.key;
+      this.deleteNode();
+      delete this.mappedPairs[id];
+    }
   }
 
   /**
   * **********
   * @private
-  * @method _remove
+  * @method removeNodeFromLinkedLists
   * **********
   */
-  _remove(node) {
-    // empty cache
-    if (this.head === null || this.tail === null) {
-      return;
-    }
-
-    // only item in the cache
-    if (this.head === node && this.tail === node) {
-      this.head = this.tail = null;
-      return;
-    }
-
-    // remove from head
-    if (this.head === node) {
-      this.head.next.previous = null;
-      this.head = this.head.next;
-      return;
-    }
-
-    // remove from tail
-    if (this.tail === node) {
-      this.tail.previous.next = null;
-      this.tail = this.tail.previous;
-      return;
-    }
-
-    // remove from middle
-    node.previous.next = node.next;
-    node.next.previous = node.previous;
+  removeNodeFromLinkedList(node) {
+    if (node === undefined) return;
+    if (node.prev !== undefined) node.prev.next = node.next;
+    if (node.next !== undefined) node.next.prev = node.prev;
+    if (node === this.tail) this.tail = node.next;
+    if (node === this.head) this.head = node.prev;
   }
 
   /**
   * **********
   * @private
-  * @method _moveFirst
+  * @method deleteNode
   * **********
   */
-  _moveFirst(node) {
-    this._remove(node);
-    this._add(node);
-  }
-
-  /**
-  * **********
-  * @private
-  * @method _removeLast
-  * **********
-  */
-  _removeLast() {
-    this._remove(this.tail);
+  deleteNode(node) {
+    if (node !== undefined) {
+      this.removeNodeFromLinkedList(node);
+      delete this.mappedPairs[node]; // remove from hashmap
+    }
   }
 }
 
 const cache = new LRUCache(5);
-console.log(cache.get(1));
-cache.set(1, '1');
-cache.set(2, '2');
-cache.set(5, '5');
-cache.set(6, '6');
-cache.set(7, '7');
-console.log(cache.get(6));
-cache.set(12, '12');
-cache.set(15, '15');
-cache.set(16, '16');
-console.log(cache.get(7));
-cache.set(17, '17');
+console.log(cache.getNode(1));
+cache.createNode(1, '1');
+cache.createNode(2, '2');
+cache.createNode(5, '5');
+cache.createNode(6, '6');
+cache.createNode(7, '7');
+console.log(cache.getNode(6));
+cache.createNode(12, '12');
+cache.createNode(15, '15');
+cache.createNode(16, '16');
+console.log(cache.getNode(7));
+cache.createNode(17, '17');
+console.log(cache.getNode(15));
+console.log("*************************");
 console.log(cache);
