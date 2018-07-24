@@ -4,13 +4,14 @@
  * @returns string
  * @example
  * findPairs(2); // returns all pairs that occur at least 2 times.
+ * TODO read the file just once when the function is loaded and then filter on demand
 */
 const fs = require('fs');
 
 module.exports = (min) => {
   const text = fs.readFileSync('./data/input.txt').toString('utf-8');
   const data = text.split('\n');
-  // console.log('records loaded:', data.length);
+  console.log('read data input file, records loaded:', data.length);
 
   let workTable = [];
   let currentTitles = [];
