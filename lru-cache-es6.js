@@ -1,4 +1,4 @@
-/* eslint-disable func-names */
+
 class Node {
   constructor(key, data) {
     this.key = key;
@@ -7,7 +7,6 @@ class Node {
     this.next = null;
   }
 }
-/* eslint-enable func-names */
 
 /**
 * @constructor
