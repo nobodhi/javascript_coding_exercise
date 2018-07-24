@@ -9,7 +9,9 @@ class Node {
 }
 
 /**
+  * **********
 * @constructor
+  * **********
 */
 class LRUCache {
   constructor(capacity) {
@@ -20,8 +22,67 @@ class LRUCache {
   }
 
   /**
+  * **********
+  * @public
+  * @method get
+  * @param {number} key
+  * @returns {number}
+  * **********
+  */
+ get(key) {
+  // Existing item
+  if (this.map[key] !== undefined) {
+
+    // Move to the first place
+    const node = this.map[key];
+    this._moveFirst(node);
+
+    // Return
+    return node;
+
+  }
+
+  // Not found
+  return -1;
+}
+
+/**
+* **********
+* @public
+* @method set
+* @param {number} key
+* @param {number} value
+* @returns {void}
+* **********
+*/
+
+  set(key, value) {
+    // Existing item
+    if (this.map[key] !== undefined) {
+      // Move to the first place
+      const node = this.map[key];
+      node.data = value;
+      this._moveFirst(node);
+      return;
+    }
+
+    // Ensuring the cache is within capacity
+    if (Object.keys(this.map).length >= this.capacity) {
+      const id = this.tail.key;
+      this._removeLast();
+      delete this.map[id];
+    }
+
+    // New Item
+    const node = new Node(key, value);
+    this._add(node);
+    this.map[key] = node;
+  } 
+  /**
+  * **********
   * @private
   * @method _add
+  * **********
   */
   _add(node) {
     /* eslint-disable no-param-reassign */
@@ -41,8 +102,10 @@ class LRUCache {
   }
 
   /**
+  * **********
   * @private
   * @method _remove
+  * **********
   */
   _remove(node) {
     // empty cache
@@ -76,8 +139,10 @@ class LRUCache {
   }
 
   /**
+  * **********
   * @private
   * @method _moveFirst
+  * **********
   */
   _moveFirst(node) {
     this._remove(node);
@@ -85,61 +150,13 @@ class LRUCache {
   }
 
   /**
+  * **********
   * @private
   * @method _removeLast
+  * **********
   */
   _removeLast() {
     this._remove(this.tail);
-  }
-
-  /**
-  * @param {number} key
-  * @returns {number}
-  */
-  get(key) {
-    // Existing item
-    if (this.map[key] !== undefined) {
-
-      // Move to the first place
-      const node = this.map[key];
-      this._moveFirst(node);
-
-      // Return
-      return node;
-
-    }
-
-    // Not found
-    return -1;
-  }
-
-  /**
-  * @param {number} key
-  * @param {number} value
-  * @returns {void}
-  */
-  set(key, value) {
-    // Existing item
-    if (this.map[key] !== undefined) {
-
-      // Move to the first place
-      var node = this.map[key];
-      node.data = value;
-      this._moveFirst(node);
-      return;
-    }
-
-    // Ensuring the cache is within capacity
-    if (Object.keys(this.map).length >= this.capacity) {
-      const id = this.tail.key;
-      this._removeLast();
-      delete this.map[id];
-    }
-
-    // New Item
-    var node = new Node(key, value);
-    this._add(node);
-    this.map[key] = node;
   }
 }
 
