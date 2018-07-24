@@ -1,9 +1,13 @@
-const Node = function (key, data) {
-  this.key = key;
-  this.data = data;
-  this.previous = null;
-  this.next = null;
-};
+/* eslint-disable func-names */
+class Node {
+  constructor(key, data) {
+    this.key = key;
+    this.data = data;
+    this.previous = null;
+    this.next = null;
+  }
+}
+/* eslint-enable func-names */
 
 /**
 * @constructor
