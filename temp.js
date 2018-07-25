@@ -8,8 +8,10 @@ cache.createNode('2', '2 value');
 cache.createNode('3', '3 value');
 cache.createNode('4', '4 value');
 cache.createNode('5', '5 value'); // size = 5, LRU = 2
-result = cache.getNode('5');
 result = cache.getNode('3');
+console.log('result', result);
+
+
 cache.createNode('6', '6 value');
 cache.createNode('7', '7 value');
 cache.createNode('8', '8 value');

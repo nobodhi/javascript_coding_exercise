@@ -36,10 +36,10 @@ class LRUCache {
   */
 
   createNode(key, value) {
-    const node = new Node(key, value);
+    const node = new Node(key.toString(), value.toString());
     this.mappedPairs.set(key, node); // add to hashmap
     this.addNodeToLinkedList(key);
-    console.log('createNode', key, ', size', this.mappedPairs.size);
+    console.log('createNode', key);
   }
 
   /**
@@ -51,17 +51,18 @@ class LRUCache {
   * **********
   */
   getNode(key) {
-    const node = this.mappedPairs.get(key);
+    const node = this.mappedPairs.get(key.toString());
     const oldHead = this.head;
     if (node !== undefined) {
 
-      this.removeNodeFromLinkedList(key); // okay it's gone, we need to add it back
+      this.removeNodeFromLinkedList(key); // removed from hashmap
       this.mappedPairs.set(key, node); // add to hashmap
       this.addNodeToLinkedList(key);
       console.log('getNode', key);
       return node.value;
     }
     console.log('did not find node', key);
+    console.log(this);
     return null;
   }
 
@@ -74,7 +75,7 @@ class LRUCache {
   * **********
   */
   removeNodeFromLinkedList(key) {
-    const node = this.mappedPairs.get(key);
+    const node = this.mappedPairs.get(key.toString());
     let nextNode = {};
     let prevNode = {};
 
@@ -106,7 +107,7 @@ class LRUCache {
   * **********
   */
   addNodeToLinkedList(key) { // HACK this node has to be in the hashmap before you can add it to the linkedlist
-    const node = this.mappedPairs.get(key);
+    const node = this.mappedPairs.get(key.toString());
     const oldHead = this.head;
     const oldTail = this.tail;
 
@@ -121,9 +122,8 @@ class LRUCache {
       this.head = node;
     }
     if (this.mappedPairs.size > this.maxCacheSize) {
-      console.log('size exceeded, deleting tail', this.tail.key);
-      this.removeNodeFromLinkedList(oldTail.key);
-      this.mappedPairs.delete(oldTail.key); // remove from hashmap
+      console.log('size exceeded, deleting node', this.tail.key);
+      this.removeNodeFromLinkedList(oldTail.key); // removed from hashmap
     }
   }
 }

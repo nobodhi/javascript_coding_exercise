@@ -8,6 +8,7 @@
     "hello-test": "mocha test/hello-test.js",
     "pairs-test": "mocha test/pairs-test.js",
     "string-test": "mocha test/string-test.js",
+    "lru-test": "mocha test/lru-test.js",
     "test:watch": "fsmonitor -s -p '+*.js' npm run test"
   },
   "version": "0.1.0",
