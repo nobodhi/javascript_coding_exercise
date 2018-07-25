@@ -11,6 +11,20 @@ Tests will run in either lab/code or mocha/chai.
 
 ## Coding Projects
 
+### Find Pairs
+
+In this exercise we are given a list of lists of music titles (corresponding to titles that users have reviewed) and asked to find all pairs of titles that occur within these lists more than N times. E.g., in the following example:
+
+X, Y, Z  
+X, Z  
+
+The pairs (X, Y) and (Y, Z) occur once, and the pair (X, Z) occurs twice. The test is [test/pairs-test.js](test/pairs-test.js) and a sample data file is at [data/input.txt](data/input.txt). A naive, vanilla JS solution is here: [find-pairs.js](find-pairs.js).
+
+#### Solution
+
+This can be looked at as an SQL or MapReduce problem in which we first map the inputs into key-value pairs and then reduce them into a solution. We first map the users, titles, and user-title pairs. We then sort by title and loop through each title's users, querying for all pairs.
+
+
 ### Cost Sharing Exercise
 
 In this project, the developer is asked to write a function that passes the set of tests run from the command line:
@@ -46,20 +60,6 @@ All you know is that the test has to pass. A naive solution is included in the c
 This is a fun example of a back-end coding challenge in Javascript that also demonstrates the dilemmas a developer faces when defending a multi-hour project like this. Javascript projects are a universe - when should you begin to stop, and step away from a solution?
 
 The naive answer simply appeals to the principles of **Document First, Test Driven Development**. While there may be innumerable ways in which the solution can be improved, the tests are passing and therefore the code is complete.
-
-### Find Pairs
-
-In this exercise we are given a list of lists of music titles (corresponding to titles that users have reviewed) and asked to find all pairs of titles that occur within these lists more than N times. E.g., in the following example:
-
-X, Y, Z  
-X, Z  
-
-The pairs (X, Y) and (Y, Z) occur once, and the pair (X, Z) occurs twice. The test is [test/pairs-test.js](test/pairs-test.js) and a sample data file is at [data/input.txt](data/input.txt). A naive, vanilla JS solution is here: [find-pairs.js](find-pairs.js).
-
-#### Solution
-
-This can be looked at as an SQL or MapReduce problem in which we first map the inputs into key-value pairs and then reduce them into a solution. We first map the users, titles, and user-title pairs. We then sort by title and loop through each title's users, querying for all pairs.
-
 
 ## Cracking the Coding Interview
 
@@ -105,6 +105,16 @@ In this case, the strings are said to have a [Levenshtein distance](https://gith
 
 The types of changes in a stateless system like a database or a REST API are *insert, update and delete*. We can model string editing using this pattern. In the insert/delete case the strings will have different length, plus or minus one, but will be otherwise identical. In the update case the strings will have the same length and be otherwise identical except for a single character difference. We can therefore use the same singleton pattern as we used in the [Palindrome Permutation](#palindrome-permutation), checking for changes in any character element and allowing one and only one change.
 
+
+### LRU Cache
+
+(16.25) Design a caching mechanism for web lookups that will map two values, e.g. a street address and a sales tax rate. Assume the two values are strings, and the cache has a maximum size and starts empty. When the maximum size is reached, the cache should begin deleting the least recently used entries in the cache.
+
+#### Solution
+
+This problem is solveable in O(1) time complexity and O(n) space complexity. The trick is two use two data structures, a doubly linked list and a hashmap. When a user performs a lookup, the key they enter is searched on in the hashmap to find a node in the linked list, which contans the key-value pair. The linked list also keeps the nodes in order, so that the most recently used is at the head of the list and the least recently used at the tail.
+
+The test is [test/lru-test.js](test/lru-test.js) and a vanilla JS solution using ES6 pseudo-classes is here: [lru-cache-es6.js](lru-cache-es6.js).
 
 ## Common Problems
 
