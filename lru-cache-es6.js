@@ -37,7 +37,6 @@ class LRUCache {
 
   createNode(key, value) {
     const node = new Node(key, value);
-    this.mappedPairs.delete(key); // ?
     this.mappedPairs.set(key, node); // add to hashmap
     this.addNodeToLinkedList(key);
     console.log('createNode', key, ', size', this.mappedPairs.size);
@@ -53,10 +52,13 @@ class LRUCache {
   */
   getNode(key) {
     const node = this.mappedPairs.get(key);
+    const oldHead = this.head;
     if (node !== undefined) {
-      this.removeNodeFromLinkedList(key);
+
+      this.removeNodeFromLinkedList(key); // okay it's gone, we need to add it back
+      this.mappedPairs.set(key, node); // add to hashmap
       this.addNodeToLinkedList(key);
-      console.log('getNode', key, ', LRU =', this.tail.key, ', size =', this.mappedPairs.size);
+      console.log('getNode', key);
       return node.value;
     }
     console.log('did not find node', key);
@@ -73,24 +75,28 @@ class LRUCache {
   */
   removeNodeFromLinkedList(key) {
     const node = this.mappedPairs.get(key);
+    let nextNode = {};
+    let prevNode = {};
 
-    if (node === undefined) return;
+    if (node === undefined) {
+      console.log('attempted to remove undefined node', key);
+      return;
+    }
 
+    // if not the tail
     if (node.prev.key !== undefined) {
-
-      const p = this.mappedPairs.get(key);
-      p.next = node.next;
-
+      prevNode = this.mappedPairs.get(node.prev.key);
+      prevNode.next = node.next;
+      if (node === this.head) this.head = prevNode;
     }
 
+    // if not the head
     if (node.next.key !== undefined) {
-      const n = node.next;
-
-      n.prev = node.prev;
+      nextNode = this.mappedPairs.get(node.next.key);
+      nextNode.prev = node.prev;
+      if (node === this.tail) this.tail = nextNode;
     }
-
-    if (node === this.tail) this.head = node.prev;
-    if (node === this.head) this.head = node.prev;
+    this.mappedPairs.delete(key); // remove from hashmap
   }
 
   /**
@@ -99,27 +105,28 @@ class LRUCache {
   * @method   addNodeToLinkedList(node) {
   * **********
   */
-  addNodeToLinkedList(key) {
+  addNodeToLinkedList(key) { // HACK this node has to be in the hashmap before you can add it to the linkedlist
     const node = this.mappedPairs.get(key);
+    const oldHead = this.head;
+    const oldTail = this.tail;
 
     if (this.head === undefined) {
       console.log('initializing');
       this.tail = node;
       this.head = node;
     } else {
-      if (this.tail.key === node.key) this.tail = this.tail.next; // check tail every time
-      this.head.next = node;
-      node.prev = this.head;
+      // node is inserted at the head position.
+      oldHead.next = node;
+      node.prev = oldHead;
       this.head = node;
     }
     if (this.mappedPairs.size > this.maxCacheSize) {
-      this.removeNodeFromLinkedList(this.tail.key);
-      this.mappedPairs.delete(this.tail.key); // remove from hashmap
-      this.tail = this.tail.next;
-      console.log('tail', this.tail.key, ', head', node.key, ', size', this.mappedPairs.size);
+      console.log('size exceeded, deleting tail', this.tail.key);
+      this.removeNodeFromLinkedList(oldTail.key);
+      this.mappedPairs.delete(oldTail.key); // remove from hashmap
     }
-  console.log(this);
   }
 }
+
 
 module.exports = LRUCache;
