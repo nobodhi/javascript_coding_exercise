@@ -73,10 +73,22 @@ class LRUCache {
   */
   removeNodeFromLinkedList(key) {
     const node = this.mappedPairs.get(key);
-    console.log('in remove')
+
     if (node === undefined) return;
-    if (node.prev !== undefined) node.prev.next = node.next;
-    if (node.next !== undefined) node.next.prev = node.prev;
+
+    if (node.prev.key !== undefined) {
+
+      const p = this.mappedPairs.get(key);
+      p.next = node.next;
+
+    }
+
+    if (node.next.key !== undefined) {
+      const n = node.next;
+
+      n.prev = node.prev;
+    }
+
     if (node === this.tail) this.head = node.prev;
     if (node === this.head) this.head = node.prev;
   }
@@ -103,10 +115,10 @@ class LRUCache {
     if (this.mappedPairs.size > this.maxCacheSize) {
       this.removeNodeFromLinkedList(this.tail.key);
       this.mappedPairs.delete(this.tail.key); // remove from hashmap
-      console.log(this);
       this.tail = this.tail.next;
       console.log('tail', this.tail.key, ', head', node.key, ', size', this.mappedPairs.size);
     }
+  console.log(this);
   }
 }
 
