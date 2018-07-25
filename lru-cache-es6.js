@@ -37,6 +37,7 @@ class LRUCache {
 
   createNode(key, value) {
     const node = new Node(key, value);
+    this.mappedPairs.delete(key); // ?
     this.mappedPairs.set(key, node); // add to hashmap
     this.addNodeToLinkedList(key);
     console.log('createNode', key, ', size', this.mappedPairs.size);
@@ -53,8 +54,8 @@ class LRUCache {
   getNode(key) {
     const node = this.mappedPairs.get(key);
     if (node !== undefined) {
-      this.removeNodeFromLinkedList(node);
-      this.addNodeToLinkedList(node);
+      this.removeNodeFromLinkedList(key);
+      this.addNodeToLinkedList(key);
       console.log('getNode', key, ', LRU =', this.tail.key, ', size =', this.mappedPairs.size);
       return node.value;
     }
@@ -72,7 +73,7 @@ class LRUCache {
   */
   removeNodeFromLinkedList(key) {
     const node = this.mappedPairs.get(key);
-
+    console.log('in remove')
     if (node === undefined) return;
     if (node.prev !== undefined) node.prev.next = node.next;
     if (node.next !== undefined) node.next.prev = node.prev;
@@ -100,38 +101,13 @@ class LRUCache {
       this.head = node;
     }
     if (this.mappedPairs.size > this.maxCacheSize) {
-      console.log('delete node', this.tail.key);
-      this.mappedPairs.delete(this.tail.key); // remove from hashmap
       this.removeNodeFromLinkedList(this.tail.key);
+      this.mappedPairs.delete(this.tail.key); // remove from hashmap
+      console.log(this);
       this.tail = this.tail.next;
       console.log('tail', this.tail.key, ', head', node.key, ', size', this.mappedPairs.size);
     }
   }
 }
 
-let result = '';
-const cache = new LRUCache(5);
-// user performs 'slow lookup' and creates a new key value pair
-cache.createNode('1', '1 value');
-cache.createNode('2', '2 value');
-cache.createNode('3', '3 value');
-
-// result = cache.getNode('3');
-// console.log('result is: ', result);
-
-cache.createNode('1', '1 value'); // test re-insertion
-
-// result = cache.getNode('1');
-// console.log('result is: ', result);
-
-cache.createNode('4', '4 value');
-cache.createNode('5', '5 value'); // size = 5, LRU = 2
-
-// // result = cache.getNode('2');
-
-cache.createNode('6', '6 value');
-cache.createNode('7', '7 value');
-cache.createNode('8', '8 value');
-cache.createNode('9', '9 value');
-
-// // result = cache.getNode('asdfasdfasdf');
+module.exports = LRUCache;
