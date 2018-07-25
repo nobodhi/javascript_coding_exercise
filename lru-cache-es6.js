@@ -37,11 +37,9 @@ class LRUCache {
 
   createNode(key, value) {
     const node = new Node(key, value);
-    this.deleteNode(node.key);
-    this.addNodeToLinkedList(node);
     this.mappedPairs.set(key, node); // add to hashmap
-    console.log('createNode', key, ', LRU =', this.tail.key, ', size =', this.mappedPairs.size);
-
+    this.addNodeToLinkedList(key);
+    console.log('createNode', key, ', size', this.mappedPairs.size);
   }
 
   /**
@@ -69,27 +67,12 @@ class LRUCache {
   /**
   * **********
   * @private
-  * @method deleteNode
-  * @param {string} key
-  * **********
-  */
-
-  deleteNode(key) {
-    const node = this.mappedPairs.get(key);
-    if (node !== undefined) {
-      this.removeNodeFromLinkedList(node);
-      this.mappedPairs.delete(node.key); // remove from hashmap
-      console.log('deleted key', node.key, 'size = ', this.mappedPairs.size);
-    }
-  }
-
-  /**
-  * **********
-  * @private
   * @method removeNodeFromLinkedLists
   * **********
   */
-  removeNodeFromLinkedList(node) {
+  removeNodeFromLinkedList(key) {
+    const node = this.mappedPairs.get(key);
+
     if (node === undefined) return;
     if (node.prev !== undefined) node.prev.next = node.next;
     if (node.next !== undefined) node.next.prev = node.prev;
@@ -103,20 +86,25 @@ class LRUCache {
   * @method   addNodeToLinkedList(node) {
   * **********
   */
-  addNodeToLinkedList(node) {
+  addNodeToLinkedList(key) {
+    const node = this.mappedPairs.get(key);
+
     if (this.head === undefined) {
       console.log('initializing');
       this.tail = node;
       this.head = node;
     } else {
-      if (this.tail.key === node.key) this.tail = this.tail.next;
+      if (this.tail.key === node.key) this.tail = this.tail.next; // check tail every time
       this.head.next = node;
       node.prev = this.head;
       this.head = node;
     }
-    if (this.mappedPairs.size >= this.maxCacheSize) {
-      console.log('size exceeded, deleting key', this.tail.key);
-      this.deleteNode(this.tail.key);
+    if (this.mappedPairs.size > this.maxCacheSize) {
+      console.log('delete node', this.tail.key);
+      this.mappedPairs.delete(this.tail.key); // remove from hashmap
+      this.removeNodeFromLinkedList(this.tail.key);
+      this.tail = this.tail.next;
+      console.log('tail', this.tail.key, ', head', node.key, ', size', this.mappedPairs.size);
     }
   }
 }
@@ -131,7 +119,7 @@ cache.createNode('3', '3 value');
 // result = cache.getNode('3');
 // console.log('result is: ', result);
 
-// cache.createNode('1', '1 value'); // test re-insertion
+cache.createNode('1', '1 value'); // test re-insertion
 
 // result = cache.getNode('1');
 // console.log('result is: ', result);
@@ -139,11 +127,11 @@ cache.createNode('3', '3 value');
 cache.createNode('4', '4 value');
 cache.createNode('5', '5 value'); // size = 5, LRU = 2
 
-// result = cache.getNode('2');
+// // result = cache.getNode('2');
 
 cache.createNode('6', '6 value');
 cache.createNode('7', '7 value');
-// cache.createNode('8', '8 value');
-// cache.createNode('9', '9 value');
+cache.createNode('8', '8 value');
+cache.createNode('9', '9 value');
 
-// result = cache.getNode('asdfasdfasdf');
+// // result = cache.getNode('asdfasdfasdf');
