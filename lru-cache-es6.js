@@ -1,11 +1,12 @@
 /* eslint-disable no-param-reassign */
 
+
 class Node {
-  constructor(key, data) {
+  constructor(key, value) {
+    this.prev = {};
+    this.next = {};
     this.key = key;
-    this.data = data;
-    this.previous = null;
-    this.next = null;
+    this.value = value;
   }
 }
 
@@ -17,9 +18,9 @@ class Node {
 class LRUCache {
   constructor(maxCacheSize) {
     this.maxCacheSize = maxCacheSize;
-    this.mappedPairs = {};
-    this.head = null;
-    this.tail = null;
+    this.mappedPairs = new Map();
+    this.head = undefined;
+    this.tail = undefined;
   }
 
   // public methods
@@ -35,17 +36,12 @@ class LRUCache {
   */
 
   createNode(key, value) {
-    if (this.mappedPairs[key] !== undefined) {
-      const node = this.mappedPairs[key];
-      node.data = value;
-      this.removeNodeFromLinkedList(node);
-      this.addNodeToLinkedList(node);
-      return;
-    }
-
     const node = new Node(key, value);
+    this.deleteNode(node.key);
     this.addNodeToLinkedList(node);
-    this.mappedPairs[key] = node;
+    this.mappedPairs.set(key, node); // add to hashmap
+    console.log('createNode', key, ', LRU =', this.tail.key, ', size =', this.mappedPairs.size);
+
   }
 
   /**
@@ -56,14 +52,15 @@ class LRUCache {
   * @returns {string}
   * **********
   */
-
- getNode(key) {
-    if (this.mappedPairs[key] !== undefined) {
-      const node = this.mappedPairs[key];
+  getNode(key) {
+    const node = this.mappedPairs.get(key);
+    if (node !== undefined) {
       this.removeNodeFromLinkedList(node);
       this.addNodeToLinkedList(node);
+      console.log('getNode', key, ', LRU =', this.tail.key, ', size =', this.mappedPairs.size);
       return node.value;
     }
+    console.log('did not find node', key);
     return null;
   }
 
@@ -72,25 +69,17 @@ class LRUCache {
   /**
   * **********
   * @private
-  * @method   addNodeToLinkedList(node) {
+  * @method deleteNode
+  * @param {string} key
   * **********
   */
-  addNodeToLinkedList(node) {
-    node.previous = null;
-    node.next = null;
 
-    if (this.head === null) {
-      this.tail = node;
-      this.head = node;
-    } else {
-      this.head.next = node;
-      node.prev = this.head;
-      this.head = node;
-    }
-    if (Object.keys(this.mappedPairs).length > this.maxCacheSize) {
-      const id = this.tail.key;
-      this.deleteNode();
-      delete this.mappedPairs[id];
+  deleteNode(key) {
+    const node = this.mappedPairs.get(key);
+    if (node !== undefined) {
+      this.removeNodeFromLinkedList(node);
+      this.mappedPairs.delete(node.key); // remove from hashmap
+      console.log('deleted key', node.key, 'size = ', this.mappedPairs.size);
     }
   }
 
@@ -104,37 +93,57 @@ class LRUCache {
     if (node === undefined) return;
     if (node.prev !== undefined) node.prev.next = node.next;
     if (node.next !== undefined) node.next.prev = node.prev;
-    if (node === this.tail) this.tail = node.next;
+    if (node === this.tail) this.head = node.prev;
     if (node === this.head) this.head = node.prev;
   }
 
   /**
   * **********
   * @private
-  * @method deleteNode
+  * @method   addNodeToLinkedList(node) {
   * **********
   */
-  deleteNode(node) {
-    if (node !== undefined) {
-      this.removeNodeFromLinkedList(node);
-      delete this.mappedPairs[node]; // remove from hashmap
+  addNodeToLinkedList(node) {
+    if (this.head === undefined) {
+      console.log('initializing');
+      this.tail = node;
+      this.head = node;
+    } else {
+      if (this.tail.key === node.key) this.tail = this.tail.next;
+      this.head.next = node;
+      node.prev = this.head;
+      this.head = node;
+    }
+    if (this.mappedPairs.size >= this.maxCacheSize) {
+      console.log('size exceeded, deleting key', this.tail.key);
+      this.deleteNode(this.tail.key);
     }
   }
 }
 
+let result = '';
 const cache = new LRUCache(5);
-console.log(cache.getNode(1));
-cache.createNode(1, '1');
-cache.createNode(2, '2');
-cache.createNode(5, '5');
-cache.createNode(6, '6');
-cache.createNode(7, '7');
-console.log(cache.getNode(6));
-cache.createNode(12, '12');
-cache.createNode(15, '15');
-cache.createNode(16, '16');
-console.log(cache.getNode(7));
-cache.createNode(17, '17');
-console.log(cache.getNode(15));
-console.log("*************************");
-console.log(cache);
+// user performs 'slow lookup' and creates a new key value pair
+cache.createNode('1', '1 value');
+cache.createNode('2', '2 value');
+cache.createNode('3', '3 value');
+
+// result = cache.getNode('3');
+// console.log('result is: ', result);
+
+// cache.createNode('1', '1 value'); // test re-insertion
+
+// result = cache.getNode('1');
+// console.log('result is: ', result);
+
+cache.createNode('4', '4 value');
+cache.createNode('5', '5 value'); // size = 5, LRU = 2
+
+// result = cache.getNode('2');
+
+cache.createNode('6', '6 value');
+cache.createNode('7', '7 value');
+// cache.createNode('8', '8 value');
+// cache.createNode('9', '9 value');
+
+// result = cache.getNode('asdfasdfasdf');
