@@ -27,13 +27,13 @@ This can be looked at as an SQL or MapReduce problem in which we first map the i
 
 ### Cost Sharing Exercise
 
-In this project, the developer is asked to write a function that passes the set of tests run from the command line:
+In this project, the developer is asked to design a backend function (module) for a cost sharing application. In this project users will provide instructions on how to split up a bill (or distribute funds) among a group of people, and the developer has to write a function that will accept these instructions and return the correct redistribution of balances.
 
-`npm run test`
+The developer is given a test harness at [test/costsharing-test.js](test/costsharing-test.js) passes the set of tests run from the command line:
 
-You can find the source for the tests in [test/test.js](test/test.js).
+`npm run costsharing-test`
 
-The test calls a module, passes it some data, and expects a set of JSON 'instructions' describing how to redistribute funds between people according to ratios provided by the user (similar to a cost-sharing app). For instance, given the following inputs:
+The test calls a module, passes it the current balances and desired distribution, and expects a set of JSON 'instructions' describing how to redistribute the balances. For instance, given the following inputs:
 
 `distribution = {
   joe: '1/2',
@@ -53,7 +53,7 @@ the transfer instructions would be:
   amount: 2
 }`
 
-All you know is that the test has to pass. A naive solution is included in the code.
+All the developer is given to go on, is that the test has to pass. A naive solution is included in the code at [cost-sharing.js](cost-sharing.js).
 
 #### Solution
 
