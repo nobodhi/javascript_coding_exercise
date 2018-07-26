@@ -29,7 +29,7 @@ This can be looked at as an SQL or MapReduce problem in which we first map the i
 
 In this project, the developer is asked to design a backend function (module) for a cost sharing application. In this project users will provide instructions on how to split up a bill (or distribute funds) among a group of people, and the developer has to write a function that will accept these instructions and return the correct redistribution of balances.
 
-The developer is given a test harness at [test/costsharing-test.js](test/costsharing-test.js) passes the set of tests run from the command line:
+The developer is given a test harness at [test/costsharing-test.js](test/costsharing-test.js). The tests run from the command line:
 
 `npm run costsharing-test`
 
