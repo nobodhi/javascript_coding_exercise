@@ -3,7 +3,7 @@
   "scripts": {
     "eslint-test": "eslint --ignore-path .gitignore .",
     "test": "mocha",
-    "costshare-test": "mocha test/test.js",
+    "costsharing-test": "mocha test/costsharing-test.js",
     "fib-test": "mocha test/fib-test.js",
     "hello-test": "mocha test/hello-test.js",
     "pairs-test": "mocha test/pairs-test.js",
