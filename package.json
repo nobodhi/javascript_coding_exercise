@@ -14,7 +14,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bignumber.js": "^4.0.2",
     "fsmonitor": "^0.2.4",
     "lodash": "^4.17.4"
   },
