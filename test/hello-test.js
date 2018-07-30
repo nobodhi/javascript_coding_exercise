@@ -15,19 +15,19 @@ describe('Hello world test', () => {
   it('should say "hello"', (done) => {
     const name = 'joe';
     const result = hello.shortGreeting(name);
-    expect(result).to.equal('hello joe'); // expect
+    expect(result).to.equal('hello joe');
     done();
   });
   it('should say "well hello there"', (done) => {
     const name = 'joe';
     const result = hello.longGreeting(name);
-    result.should.equal('well hello there joe'); // should
+    result.should.equal('well hello there joe');
     done();
   });
   it('should say "hello"', (done) => {
     const name = 'joe';
     const result = hello.shortGreeting(name);
-    assert.equal(result, 'hello joe'); // assert
+    assert.equal(result, 'hello joe');
     done();
   });
 });
