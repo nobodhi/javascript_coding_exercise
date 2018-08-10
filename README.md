@@ -85,7 +85,7 @@ We can approach this iteratively using a *for* loop, or in a functional style us
 
 (1.2) Write a function/module that checks if two strings are permutations of each other.
 
-### Solution
+#### Solution
 
 The answer depends on what you want to do about whitespace and capitalization. Regardless whether we are concerned with whitespace or capitalization, in the general case a naive solution simply sorts the characters into two string arrays and checks whether they are the same.
 
