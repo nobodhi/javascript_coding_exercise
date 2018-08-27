@@ -52,7 +52,6 @@ class LRUCache {
   */
   getNode(key) {
     const node = this.mappedPairs.get(key.toString());
-    const oldHead = this.head;
     if (node !== undefined) {
 
       this.removeNodeFromLinkedList(key); // removed from hashmap
@@ -62,7 +61,6 @@ class LRUCache {
       return node.value;
     }
     console.log('did not find node', key);
-    console.log(this);
     return null;
   }
 
@@ -103,10 +101,11 @@ class LRUCache {
   /**
   * **********
   * @private
-  * @method   addNodeToLinkedList(node) {
+  * @method   addNodeToLinkedList(node)
   * **********
   */
-  addNodeToLinkedList(key) { // HACK this node has to be in the hashmap before you can add it to the linkedlist
+  addNodeToLinkedList(key) {
+    // this node has to be in the hashmap before you can add it to the linkedlist
     const node = this.mappedPairs.get(key.toString());
     const oldHead = this.head;
     const oldTail = this.tail;
