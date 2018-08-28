@@ -87,6 +87,7 @@ function crawl(href, depth, parent) {
     getPage(href, parent, (error, page) => {
       pageList.push(page);
       const links = page.links[0];
+      // console.log('href', href, 'depth', depth, 'parent', parent);
 
       if (links !== undefined) {
         links.forEach((link) => {
