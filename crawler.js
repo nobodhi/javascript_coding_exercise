@@ -66,8 +66,9 @@ function getPage(href, parent, next) {
 
 /**
  * @public
- * @function crawl recursive async
+ * @function crawl recursively crawls a site
  * @param {string} href the next page to crawl
+ * @param {number} depth the maximum depth from root href
  * @param {string} parent the parent page
 * @returns {pageList} an array of pages
  */
@@ -75,12 +76,9 @@ function crawl(href, depth, parent) {
   const url = new URL(href);
 
   if (parent === undefined) { // reset everything
-    if (pageList.length < 1) {
-      host = url.origin;
-      console.log('host', host);
-    } else {
-      // this is a restart
-      pageList = undefined;
+    host = url.origin;
+    if (pageList.length > 0) {
+      pageList = []; // restart
     }
   }
 
