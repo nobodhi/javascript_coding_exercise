@@ -12,8 +12,9 @@ class Page {
     this.assets = [];
   }
 }
-const pageList = [];
 const visitedPages = [];
+
+let pageList = [];
 let host;
 
 // private methods
@@ -78,7 +79,8 @@ function crawl(href, depth, parent) {
       host = url.origin;
       console.log('host', host);
     } else {
-      return pageList; // BUG TODO
+      // this is a restart
+      pageList = undefined;
     }
   }
 
