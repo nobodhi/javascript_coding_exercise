@@ -2,6 +2,7 @@
 
 const request = require('request');
 const cheerio = require('cheerio');
+const URL = require('url-parse');
 
 class Page {
   constructor(href, parent) {
@@ -31,7 +32,8 @@ function getPage(href, parent, next) {
         if (followLink[0] === '/') {
           followLink = host + followLink;
         }
-        if (followLink.includes(host)) {
+        const followUrl = new URL(followLink);
+        if (followUrl.origin === host) {
           if (!links.includes(followLink)) links.push(followLink);
         }
       });
@@ -69,11 +71,14 @@ function getPage(href, parent, next) {
 * @returns {pageList} an array of pages
  */
 function crawl(href, depth, parent) {
+  const url = new URL(href);
+
   if (parent === undefined) { // reset everything
     if (pageList.length < 1) {
-      host = href; // prevent re-crawl
+      host = url.origin;
+      console.log('host', host);
     } else {
-      return pageList; // prevent new crawl
+      return pageList; // BUG TODO
     }
   }
 
@@ -83,13 +88,15 @@ function crawl(href, depth, parent) {
       pageList.push(page);
       const links = page.links[0];
 
-      links.forEach((link) => {
-        if (depth > 0) {
-          if (!visitedPages.includes(link.replace(/\/$/, ''))) {
-            crawl(link, depth - 1, href);
+      if (links !== undefined) {
+        links.forEach((link) => {
+          if (depth > 0) {
+            if (!visitedPages.includes(link.replace(/\/$/, ''))) {
+              crawl(link, depth - 1, href);
+            }
           }
-        }
-      });
+        });
+      }
     }); // getPage
   }
   return pageList;
