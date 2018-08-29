@@ -1,13 +1,13 @@
 const CircularJSON = require('circular-json');
 const crawler = require('./crawler');
 
-let siteMap = crawler('http://sendlove.io', 1);
+let siteMap = crawler('http://sendlove.io', 0);
 
-setTimeout(() => { // HACK
+setTimeout(() => {
   console.log(CircularJSON.stringify(siteMap, null, 2));
-  siteMap = crawler('http://josephbrown.herokuapp.com', 4);
-  setTimeout(() => { // HACK
+  siteMap = crawler('http://sendlove.io/api', 1);
+  setTimeout(() => {
     console.log(CircularJSON.stringify(siteMap, null, 2));
-  }, 1000);
-}, 1000);
+  }, 1500);
+}, 1500);
 

@@ -18,7 +18,12 @@ let pageList = [];
 let host;
 
 // private methods
-
+/**
+ * 
+ * @param {*} href 
+ * @param {*} parent 
+ * @param {*} next 
+ */
 function getPage(href, parent, next) {
   const links = [];
   const assets = [];
@@ -77,9 +82,6 @@ function crawl(href, depth, parent) {
 
   if (parent === undefined) { // reset everything
     host = url.origin;
-    if (pageList.length > 0) {
-      pageList = []; // restart
-    }
   }
 
   if (!visitedPages.includes(href) && href.includes(host)) {
@@ -87,14 +89,12 @@ function crawl(href, depth, parent) {
     getPage(href, parent, (error, page) => {
       pageList.push(page);
       const links = page.links[0];
-      // console.log('href', href, 'depth', depth, 'parent', parent);
+      console.log('depth', depth, 'href', href, 'parent', parent);
 
-      if (links !== undefined) {
+      if (links !== undefined && depth > 0) {
         links.forEach((link) => {
-          if (depth > 0) {
-            if (!visitedPages.includes(link.replace(/\/$/, ''))) {
-              crawl(link, depth - 1, href);
-            }
+          if (!visitedPages.includes(link.replace(/\/$/, ''))) {
+            crawl(link, depth - 1, href);
           }
         });
       }
