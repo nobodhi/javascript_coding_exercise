@@ -14,7 +14,7 @@ Tests will run in either lab/code or mocha/chai.
 
 ## Site Crawler
 
-Here you're asked to write a site crawler. I made the assumption that you should be able to additionally crawl a sub-domain, but that's optional. Try to use vanilla JS and include some basic tests. Expect to spend up to 10 hours on this challenge.
+Here you're asked to write a [site crawler](crawler.js). I made the assumption that you should be able to additionally crawl a sub-domain, but that's optional. Try to use vanilla JS and include some [basic tests](test/crawler-test.js). Expect to spend up to 10 hours on this challenge.
 
 #### Solution
 
