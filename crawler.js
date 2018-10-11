@@ -14,15 +14,17 @@ class Page {
 }
 const visitedPages = [];
 
-let pageList = [];
+const pageList = [];
 let host;
 
 // private methods
+
 /**
- * 
- * @param {*} href 
- * @param {*} parent 
- * @param {*} next 
+ * @private
+ * @function getPage given a URL and a parent URL, returns a new page object
+ * @param {*} href string URL
+ * @param {*} parent the url of the parent node alternately could be a node as well.
+ * @param {*} next returns the new page node
  */
 function getPage(href, parent, next) {
   const links = [];
@@ -68,6 +70,8 @@ function getPage(href, parent, next) {
     next(err, page);
   });
 }
+
+// public methods
 
 /**
  * @public
