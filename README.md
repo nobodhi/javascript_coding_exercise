@@ -12,6 +12,13 @@ Tests will run in either lab/code or mocha/chai.
 
 # Coding Projects
 
+## Site Crawler
+
+Here you're asked to write a site crawler. I made the assumption that you should be able to additionally crawl a sub-domain, but that's optional. Try to use vanilla JS and include some basic tests. Expect to spend up to 10 hours on this challenge.
+
+#### Solution
+
+The important thing to think about is the data structure: if you consider the site as a tree, then all you have to do is choose a tree traversal. You'll probably want to use a recursive BFS, which I think just makes more sense.
 
 ## Find Pairs
 
