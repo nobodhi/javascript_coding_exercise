@@ -4,9 +4,7 @@
 
 Following are some fun puzzles and answers that you might encounter while interviewing for Javascript related jobs or while studying for Javascript related interviews. Also included are some classic problems from **Cracking the Coding Interview**. The interview questions range from whiteboard exercises to 4-hour projects. 
 
-The problems are not described in great depth here. Instead, __every problem is accompanied by a test script, and your challenge is to get the test script to pass__. 
-
-This is the principle behind _Document First, Test Driven evelopment (TDD)_. The requirements are all found in the test scripts, and the developer's only job is to get the tests to pass.
+The problems are not described in great depth here. Instead, __every problem is accompanied by a test script, and the challenge is to get the test script to pass__. This is the principle behind _Document First, Test Driven evelopment (TDD)_. The requirements are all found in the documents, which inform test scripts, and the developer's only job is to get the tests to pass.
 
 In this project, every solution is accompanied by a test, and all tests will run in either lab/code or mocha/chai.
 
