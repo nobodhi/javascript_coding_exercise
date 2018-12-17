@@ -6,15 +6,15 @@ interview questions written in JS. test located in test/hello-test.js.
  * @example
  * sayHello.shortGreeting('joe'); // 'hello joe'
 */
-const greeting1 = 'hello ';
-const greeting2 = 'well hello there ';
+const greeting1 = "hello ";
+const greeting2 = "well hello there ";
 
-module.exports.shortGreeting = (e) => {
+module.exports.shortGreeting = e => {
   const newGreeting = greeting1 + e;
   return newGreeting;
 };
 
-module.exports.longGreeting = (e) => {
+module.exports.longGreeting = e => {
   const newGreeting = greeting2 + e;
   return newGreeting;
 };
