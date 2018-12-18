@@ -1,8 +1,6 @@
 {
-
-    "rules": 
-    {
-        "prefer-destructuring": 0
-    },
-    "env": { "mocha": true }
+  "rules": {
+    "prefer-destructuring": 0
+  },
+  "env": { "mocha": true, "es6": true }
 }
