@@ -8,34 +8,34 @@ services:
       dockerfile: 'Dockerfile'
 
   test:
-    image: transferinstructionsexercise_base:latest
+    image: js_test:latest
     command: 'npm run test'
     network_mode: "host"
     volumes:
-      - .:/coding-challenge
-      - /coding-challenge/node_modules
+      - .:/javascript_coding_exercise
+      - /javascript_coding_exercise/node_modules
   testwatch:
-    image: transferinstructionsexercise_base:latest
+    image: js_test:latest
     command: 'npm run test:watch'
     network_mode: "host"
     volumes:
-      - .:/coding-challenge
-      - /coding-challenge/node_modules
+      - .:/javascript_coding_exercise
+      - /javascript_coding_exercise/node_modules
 
   # Start a Node.js console
   console:
-    image: transferinstructionsexercise_base:latest
+    image: js_test:latest
     command: 'node'
     network_mode: "host"
     volumes:
-      - .:/coding-challenge
-      - /coding-challenge/node_modules
+      - .:/javascript_coding_exercise
+      - /javascript_coding_exercise/node_modules
 
   # Run bash in Docker environment
   bash:
-    image: transferinstructionsexercise_base:latest
+    image: js_test:latest
     command: '/bin/bash'
     network_mode: "host"
     volumes:
-      - .:/coding-challenge
-      - /coding-challenge/node_modules
+      - .:/javascript_coding_exercise
+      - /javascript_coding_exercise/node_modules
