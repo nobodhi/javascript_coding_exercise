@@ -30,17 +30,17 @@ function memoize(fn){
     if (cache[args]){
       return cache[args];
     }
-    newCall = fn.apply(null, args);
-    cache[args] = newCall;
-    return newCall;
+    memo = fn.apply(null, args);
+    cache[args] = memo;
+    return memo;
   }
 }
-const fastFib = memoize(fib);
+const fib_partial = memoize(fib);
 function fib(n) {
   if (n < 2) {
     return n;
   }
-  return fastFib(n - 1) + fastFib(n - 2);
+  return fib_partial(n - 1) + fib_partial(n - 2);
 }
 
-console.log(fastFib(1001));
+console.log(fib_partial(1001));
