@@ -21,18 +21,18 @@ exports.containsUnique = e => {
 
 /** Determine whether two strings are permuations of one another.
  * @function isPermutation
- * @param {string} s1
- * @param {string} s2
+ * @param {string} string1
+ * @param {string} string2
  * @example
  * stringCompare.isPermutation('I am Lord Voldemort', 'Tom Marvolo Riddle ');
  */
-exports.isPermutation = (s1, s2) => {
-  const s1Arr = s1.split("").sort();
-  const s2Arr = s2.split("").sort();
-  if (s1Arr.length !== s2Arr.length) return false;
+exports.isPermutation = (string1, string2) => {
+  const string1Arr = string1.split("").sort();
+  const string2Arr = string2.split("").sort();
+  if (string1Arr.length !== string2Arr.length) return false;
   // loop thru one of the arrays and check element by element
-  for (let i = 0; i < s1Arr.length; i += 1) {
-    if (s1Arr[i] !== s2Arr[i]) return false;
+  for (let i = 0; i < string1Arr.length; i += 1) {
+    if (string1Arr[i] !== string2Arr[i]) return false;
   }
   return true;
 };
@@ -75,37 +75,37 @@ exports.isPalindromePermutation = e => {
 
 /** Determine if two strings are a single edit away, i.e. Levenshtein distance <= 1.
  * @function oneEdit
- * @param {string} s1
- * @param {string} s2
+ * @param {string} string1
+ * @param {string} string2
  * @example
  * oneEdit('pale', 'bale'); // true
  * oneEdit('pale', 'ball'); // false
  */
-exports.oneEdit = (s1, s2) => {
-  const m = s1.toString().length;
-  const n = s2.toString().length;
+exports.oneEdit = (string1, string2) => {
+  const len1 = string1.toString().length;
+  const len2 = string2.toString().length;
   let editCount = 0;
-  let i = 0;
-  let j = 0;
-  if (Math.abs(m - n) > 1) {
+  let index1 = 0;
+  let index2 = 0;
+  if (Math.abs(len1 - len2) > 1) {
     return false;
   }
   do {
-    const char1 = s1.charAt(i);
-    const char2 = s2.charAt(j);
+    const char1 = string1.charAt(index1);
+    const char2 = string2.charAt(index2);
     console.log(char1, char2);
     // if we locate a character difference, allow up to one edit. if the strings are different
     // lengths, attempt to re-align them for the next loop.
     if (char1 !== char2) {
       if (editCount == 1) return false;
       editCount += 1;
-      if (m >= n) i += 1;
-      if (n >= m) j += 1;
+      if (len1 >= len2) index1 += 1;
+      if (len2 >= len1) index2 += 1;
     } else {
-      i += 1;
-      j += 1;
+      index1 += 1;
+      index2 += 1;
     }
-  } while (i < m && j < n);
+  } while (index1 < len1 && index2 < len2);
 
   return true;
 };
