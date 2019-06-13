@@ -4,14 +4,14 @@
  * @returns boolean
  * @example
  * stringCompare.containsUnique('123455'); // false
-*/
-exports.containsUnique = (e) => {
+ */
+exports.containsUnique = e => {
   // are all the characters in the string unique? assume it's an enumerable character set
   let charsArr = [];
-  charsArr = e.split('');
+  charsArr = e.split("");
   let result = true;
   charsArr = charsArr.reduce((acc, val) => {
-    acc[val] = acc[val] === undefined ? 1 : acc[val] += 1;
+    acc[val] = acc[val] === undefined ? 1 : (acc[val] += 1);
     if (acc[val] > 1) result = false;
     return acc;
   }, {});
@@ -27,8 +27,8 @@ exports.containsUnique = (e) => {
  * stringCompare.isPermutation('I am Lord Voldemort', 'Tom Marvolo Riddle ');
  */
 exports.isPermutation = (s1, s2) => {
-  const s1Arr = s1.split('').sort();
-  const s2Arr = s2.split('').sort();
+  const s1Arr = s1.split("").sort();
+  const s2Arr = s2.split("").sort();
   if (s1Arr.length !== s2Arr.length) return false;
   // loop thru one of the arrays and check element by element
   for (let i = 0; i < s1Arr.length; i += 1) {
@@ -43,25 +43,25 @@ exports.isPermutation = (s1, s2) => {
  * @example
  * stringCompare.isPalindromePermutation('aabb');
  */
-exports.isPalindromePermutation = (e) => {
+exports.isPalindromePermutation = e => {
   // if there are an even number of characters then all counts will ba a multiple of 2.
   // otherwise, one of them will have a count of 1.
   let charsArr = [];
   let charCounts = {};
-  charsArr = e.split('');
+  charsArr = e.split("");
   let result = true;
 
   // singleton
   charCounts = charsArr.reduce((acc, val) => {
-    acc[val] = acc[val] === undefined ? 1 : acc[val] += 1;
+    acc[val] = acc[val] === undefined ? 1 : (acc[val] += 1);
     return acc;
   }, {});
   console.log(charCounts);
 
-  const isEven = (charCounts.length % 2 === 0);
+  const isEven = charCounts.length % 2 === 0;
   let foundOdd = false;
 
-  Object.keys(charCounts).forEach((key) => {
+  Object.keys(charCounts).forEach(key => {
     if (charCounts[key] % 2 === 1) {
       // we found an odd number
       if (!isEven && foundOdd) result = false; // if array length is odd, ONE odd result is allowed
@@ -97,8 +97,8 @@ exports.oneEdit = (s1, s2) => {
     // if we locate a character difference, allow up to one edit. if the strings are different
     // lengths, attempt to re-align them for the next loop.
     if (char1 !== char2) {
+      if (editCount == 1) return false;
       editCount += 1;
-      if (editCount > 1) return false;
       if (m >= n) i += 1;
       if (n >= m) j += 1;
     } else {
