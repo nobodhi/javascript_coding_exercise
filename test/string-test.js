@@ -71,10 +71,23 @@ describe('String compare tests', () => {
     expect(result).to.equal(true);
     done();
   });
-  // one Edit Apart, ex 1.1
   it('should return false for strings with two changes', (done) => {
     const s1 = 'pale';
     const s2 = 'ball';
+    const result = stringCompare.oneEdit(s1, s2);
+    expect(result).to.equal(false);
+    done();
+  });
+  it('should immediately return false for strings with different lengths', (done) => {
+    const s1 = 'paler';
+    const s2 = 'pal';
+    const result = stringCompare.oneEdit(s1, s2);
+    expect(result).to.equal(false);
+    done();
+  });
+  it('should immediately return false for strings with different lengths', (done) => {
+    const s1 = 'pal';
+    const s2 = 'paler';
     const result = stringCompare.oneEdit(s1, s2);
     expect(result).to.equal(false);
     done();
