@@ -1,13 +1,13 @@
-const CircularJSON = require('circular-json');
-const crawler = require('./crawler');
+const PI = 3.14;
+// PI = 3.1415;
+console.log(PI);
 
-let siteMap = crawler('http://sendlove.io', 0);
+const add = a => b => a + b;
+console.log(add(1)(2));
 
-setTimeout(() => {
-  console.log(CircularJSON.stringify(siteMap, null, 2));
-  siteMap = crawler('http://sendlove.io/api', 1);
-  setTimeout(() => {
-    console.log(CircularJSON.stringify(siteMap, null, 2));
-  }, 1500);
-}, 1500);
-
+var fs = require('fs');
+var array = fs.readFileSync('./data/input.txt').toString().split("\n");
+for(i in array) {
+    console.log(array[i]);
+}
+array.map(a => console.log(a))

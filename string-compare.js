@@ -84,22 +84,15 @@ exports.isPalindromePermutation = e => {
 exports.oneEdit = (string1, string2) => {
   const len1 = string1.toString().length;
   const len2 = string2.toString().length;
-  const len1_is_longer = (len1 > len2)
+  // const len1_is_longer = (len1 > len2)
   let editCount = 0;
   let index1 = 0;
   let index2 = 0;
-  if (len1_is_longer && len1-len2 > 1) {
-    console.log("failed length test", string1, string2);
-    return false;
-  }
-  if (!len1_is_longer && len2-len1 > 1) {
-    console.log("failed length test", string1, string2);
+  if (Math.abs(len1-len2) > 1) {
+    console.log("Levenshtein distance > 1", string1, string2);
     return false;
   }
   
-  if (Math.abs(len1 - len2) > 1) {
-    return false;
-  }
   do {
     const char1 = string1.charAt(index1);
     const char2 = string2.charAt(index2);

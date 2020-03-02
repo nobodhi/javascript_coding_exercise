@@ -15,9 +15,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "async": "^3.2.0",
     "cheerio": "^1.0.0-rc.2",
     "fsmonitor": "^0.2.4",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.15",
     "request": "^2.88.0",
     "url-parse": "^1.4.3"
   },
