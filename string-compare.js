@@ -7,8 +7,7 @@
  */
 exports.containsUnique = e => {
   // are all the characters in the string unique? assume it's an enumerable character set
-  let charsArr = [];
-  charsArr = e.split("");
+  const charsArr = e.split("");
   const charCounts = {};
   charsArr.map(char => charCounts[char] = (charCounts[char]||0)+1);
   console.log(charCounts);

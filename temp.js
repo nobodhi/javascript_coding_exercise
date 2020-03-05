@@ -1,53 +1,13 @@
-const PI = 3.14;
-// PI = 3.1415;
-console.log(PI);
 
-const add = a => b => a + b;
-console.log(add(1)(2));
-
-// note syntax
-const obj = {
-  f(m) {
-    console.log(m)
-  }
-}
-obj.f('Test')
-
-const f = (m) => {
-  console.log(m)
-}
-f('Test2')
-
-const a = [
-  // a is an array and the first element is a function that logs whatever it's passed
-  m => console.log(m)
-]
-a[0]('Test array 0')
-
-// timing dependency.
-const x = {
-  val: 2
-};
-const x1 = x => Object.assign({}, x, { val: x.val + 1});
-const x2 = x => Object.assign({}, x, { val: x.val * 2});
-console.log(x1(x2(x)).val); // 5
-console.log(x2(x1(x)).val); // 6
-// simpler
-const z = 2;
-const y1 = y => y + 1;
-const y2 = y => y * 2;
-console.log(y1(y2(z))); // 5
-console.log(y2(y1(z))); // 6
-console.log(y1(y2(z))); // 5
-
-console.log("counter")
 // counter
 let arr = []
-for (i=0;i<5;i++) {
+for (i=0;i<15;i++) {
   arr.push(i)
-  console.log(arr[i])
+  // console.log(arr[i])
 }
 
+
+/*
 // using Maps
 var m = new Map()
 m.set('a', 1)
@@ -63,6 +23,7 @@ for (k of m) {
   console.log(iter.next())
 }
 
+
 // function that creates an object
 
 const createUser = ({
@@ -76,11 +37,27 @@ const createUser = ({
 const firstUser = createUser ({name:'Joe', favoriteColor:'Blue'})
 const secondUser = createUser({name:'Duncan', favoriteColor:'red'})
 console.log(firstUser, secondUser)
+console.log(Object.values(firstUser))
+if (Object.values(firstUser).includes('Joe')) 
+  console.log('firstUser contains Joe')
+else
+  console.log('firstUser does not contain Joe')
 const users = []
 users.push(firstUser)
 users.push(secondUser)
-console.log(users)
+// console.log(users)
+// for (user of users) {
+//   console.log(user, Object.values(user))
+// }
 
-sc = require('./string-compare')
-const string1 = 'asdghjkl;a'
-console.log(sc.containsUnique(string1))
+// is there an object in the array with a favoriteColor of red?
+
+// const redUser = users.find(elem => Object.values(elem)[1] == 'red')
+const redUsers = users.filter(elem => elem.favoriteColor == 'red') // better!
+console.log(redUsers)
+
+// sc = require('./string-compare')
+// const string1 = 'asdghjkl;a'
+// console.log(sc.containsUnique(string1))
+
+*/
