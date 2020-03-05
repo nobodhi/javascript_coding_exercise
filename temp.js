@@ -6,8 +6,17 @@ for (i=0;i<15;i++) {
   // console.log(arr[i])
 }
 
+// arrays
 
-/*
+const arr1 = [1,2]
+const arr2 = arr1.concat(3)
+console.log (arr2)
+for (val in arr2)
+  console.log(val)
+if (arr2.includes(3))
+  console.log('arr2 includes 3')
+
+
 // using Maps
 var m = new Map()
 m.set('a', 1)
@@ -22,6 +31,19 @@ console.log(iter)
 for (k of m) {
   console.log(iter.next())
 }
+
+const map = new Map()
+
+map.set(1001, 'Joe')
+map.set(1002, 'Bob')
+console.log(map)
+// key, value must be written as an array :( while for arrays we use for ... in
+for ([k,v] of map) {
+  console.log("key", k, "value", v)
+}
+console.log(map.values())
+if (Array.from(map.values()).includes('Joe'))
+  console.log('map includes Joe')
 
 
 // function that creates an object
@@ -42,13 +64,15 @@ if (Object.values(firstUser).includes('Joe'))
   console.log('firstUser contains Joe')
 else
   console.log('firstUser does not contain Joe')
+
+// create an array of objects
 const users = []
 users.push(firstUser)
 users.push(secondUser)
-// console.log(users)
-// for (user of users) {
-//   console.log(user, Object.values(user))
-// }
+console.log(users)
+for (user of users) {
+  console.log(user, Object.values(user))
+}
 
 // is there an object in the array with a favoriteColor of red?
 
@@ -60,4 +84,3 @@ console.log(redUsers)
 // const string1 = 'asdghjkl;a'
 // console.log(sc.containsUnique(string1))
 
-*/
