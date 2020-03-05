@@ -84,3 +84,14 @@ console.log(redUsers)
 // const string1 = 'asdghjkl;a'
 // console.log(sc.containsUnique(string1))
 
+const sortArray = [99,2,3,3,12,4,5];
+
+bubbleSort = require('./bubble-sort');
+const bubbleSorted = [...sortArray];
+console.log("bubble sort\n", bubbleSorted);
+bubbleSort(bubbleSorted);
+
+selectionSort = require('./selection-sort');
+const selectionSorted = [...sortArray];
+console.log("selection sort\n", selectionSorted);
+selectionSort(selectionSorted);
