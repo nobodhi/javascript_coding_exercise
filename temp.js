@@ -87,11 +87,11 @@ console.log(redUsers)
 const sortArray = [99,2,3,3,12,4,5];
 
 bubbleSort = require('./bubble-sort');
-const bubbleSorted = [...sortArray];
-console.log("bubble sort\n", bubbleSorted);
-bubbleSort(bubbleSorted);
+const arrBubble = [...sortArray];
+console.log("bubble sort\n", arrBubble);
+bubbleSort(arrBubble);
 
 selectionSort = require('./selection-sort');
-const selectionSorted = [...sortArray];
-console.log("selection sort\n", selectionSorted);
-selectionSort(selectionSorted);
+const arrSelection = [...sortArray];
+console.log("selection sort\n", arrSelection);
+selectionSort(arrSelection);

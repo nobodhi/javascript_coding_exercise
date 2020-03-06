@@ -1,28 +1,24 @@
 /**
-  Fibonacci series: this module should pass the tests in /test/fib_test.js.
-  A naive solution is included below.
-  @example
-  fibonacci(8); // [1,1,2,3,5,8,13,21,34]
-  fibonacci(0); // [1]
-*/
+ * @public
+ * @function  fib calculate the fibonacci series
+ * @param {number} e length of series returned
+ * @returns {Array} first n elements as an array
+ */
 
-// helper function: populates the nth element of the array and returns it. problems:
-// call stack only allows 12500 iterations. memoization depends on side effects.
-function fibonacci(e) {
-  if (e <= 1) {
-    result[e] = 1;
-  } else if (result[e] === undefined) { // skip those already populated
-    result[e] = fibonacci(e - 1) + fibonacci(e - 2);
-  }
-  return result[e];
-}
-
-// returns the completed array
 function fib(e) {
-  result = []; // memoization
-  fibonacci(e);
-  // console.log(result);
+  let result = [1]
+  let x = y = 1
+  if (e < 2) 
+    return 1
+  for (let i=1;i<e;i++) {
+    [x,y] = [y,x+y]
+    result.push(x)
+  }
   return result;
 }
+
+// testing
+// let e = 8;
+// console.log(fib(e))
 
 module.exports = fib;
