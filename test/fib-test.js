@@ -3,7 +3,6 @@ const fibonacci = require('../fibonacci.js');
 
 const expect = chai.expect;
 
-// TODO add a test that N can only be a natural number.
 describe('Fibonacci sum of series test', () => {
   it('should return an array containing the first n+1 elements of the fibonacci sequence', (done) => {
     const x = Math.floor(Math.random() * 20)+1;

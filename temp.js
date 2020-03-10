@@ -95,3 +95,14 @@ selectionSort = require('./selection-sort');
 const arrSelection = [...sortArray];
 console.log("selection sort\n", arrSelection);
 selectionSort(arrSelection);
+
+const foo = ['bar']
+// for (let i = 0, {length} = foo; i < length; i++) {
+//   console.log(i)
+// }
+let {length} = foo;
+console.log(length, {length})
+
+const range1 = Array.from({length: 5}, (v, i) => i);
+console.log(range1)
+range1.forEach(v => console.log(v))
