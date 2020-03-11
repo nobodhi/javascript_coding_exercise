@@ -14,16 +14,16 @@ const sieve = (n) => {
   sieve.forEach(s => {
     /* 
     for every remaining number in the sieve, remove its square 
-    and every subsequent multiple up to sqrt(n) from the map
+    and every subsequent multiple up to n from the map
     */
     if (primes.get(s)) {
-    for (let m=Math.pow(s, 2);m<=n;m+=s) {
-      primes.delete(m);
+      for (let m=Math.pow(s, 2);m<=n;m+=s) {
+        primes.delete(m);
       }
     }
   })
   return Array.from(primes.keys());
 }
 
-console.log(sieve(200))
+// console.log(sieve(200))
 module.exports = sieve;

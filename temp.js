@@ -106,3 +106,6 @@ console.log(length, {length})
 const range1 = Array.from({length: 5}, (v, i) => i);
 console.log(range1)
 range1.forEach(v => console.log(v))
+
+sieve = require('./sieve')
+console.log(sieve(200))
