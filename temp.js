@@ -109,3 +109,10 @@ range1.forEach(v => console.log(v))
 
 sieve = require('./sieve')
 console.log(sieve(200))
+
+const fs = require('fs');
+var array = fs.readFileSync('./data/input.txt').toString().split("\n");
+for(i in array) {
+    console.log(i, array[i]);
+}
+array
