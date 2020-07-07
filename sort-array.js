@@ -29,4 +29,5 @@ console.log("using a counting function", unique2)
 // using ES6 Sets 
 const uniqueSet = new Set(parsed.flat().sort()); 
 const unique3 = Array.from(uniqueSet); 
-console.log("using ES6 Set", unique3)
+console.log("using ES6 Set:", unique3)
+console.log("original ES6 Set:", uniqueSet)

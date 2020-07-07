@@ -29,7 +29,7 @@ describe('String compare tests', () => {
   });
   it('should find these strings to be permutations', (done) => {
     const exp1 = 'I am Lord Voldemort'.toLowerCase();
-    const exp2 = 'Tom Marvolo Riddle '.toLowerCase();
+    const exp2 = 'Tom Marvolo Riddle'.toLowerCase();
     const result = stringCompare.isPermutation(exp1, exp2);
     expect(result).to.equal(true);
     done();

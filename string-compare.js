@@ -18,7 +18,7 @@ exports.containsUnique = e => {
   return true;
 };
 
-/** Determine whether two strings are permuations of one another.
+/** Determine whether two strings are permuations (anagrams) of one another.
  * @function isPermutation
  * @param {string} string1
  * @param {string} string2
@@ -26,14 +26,22 @@ exports.containsUnique = e => {
  * stringCompare.isPermutation('I am Lord Voldemort', 'Tom Marvolo Riddle ');
  */
 exports.isPermutation = (string1, string2) => {
+  string1 = string1.toLowerCase().replace(/\s/g, '');
+  string2 = string2.toLowerCase().replace(/\s/g, '');
   const string1Arr = string1.split("").sort();
   const string2Arr = string2.split("").sort();
+  console.log(string1Arr, string2Arr);
   if (string1Arr.length !== string2Arr.length) return false;
   // loop thru one of the arrays and check element by element
   for (let i = 0; i < string1Arr.length; i += 1) {
     if (string1Arr[i] !== string2Arr[i]) return false;
   }
   return true;
+
+  // TODO. this is kind of a BS answer, you really should run a counter,
+  // or possibly remove characters as they are found. 
+  // also, add something in the readme about testing.
+
 };
 
 /** Determine if a string is a permutation of a palindrome.
